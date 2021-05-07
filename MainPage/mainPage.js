@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let headerChipsBlock = document.createElement('div');
         headerChipsBlock.classList.add('headerChipsBlock');
         createChips(headerChipsBlock, listApplied[i]);
-        chipsLine.appendChildChild(headerChipsBlock);
+        chipsLine.appendChild(headerChipsBlock);
       }
       headerChipsContainer.appendChildChild(chipsLine);
     }
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
       tagChip.classList.add('headerChip');
       tagChip.classList.add('needAnimation');
       tagChip.textContent = list[k];
-      chipsBlock.appendChildChild(tagChip);
+      chipsBlock.appendChild(tagChip);
     }
   }
   //------------------END ADD TAG CHIPS (NOT FINISHED)------------------------
