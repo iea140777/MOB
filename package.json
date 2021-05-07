@@ -1,0 +1,23 @@
+{
+  "name": "mobilepeople",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel techNews -d lib"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "postcss-cli": "^8.3.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.1",
+    "autoprefixer": "^10.2.5",
+    "flex-gap-polyfill": "^4.0.1",
+    "postcss": "^8.2.14"
+  }
+}
