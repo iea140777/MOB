@@ -1,0 +1,118 @@
+.ItemContent {
+  gap: 48px;
+}
+
+.ItemSection {
+  gap: 48px;
+}
+
+.ItemSection .backLink {
+  margin-bottom: 0px;
+}
+
+.ItemSection h3 {
+  font-family: 'SF Pro Text medium';
+  font-weight: 500;
+}
+
+.ItemInnerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.ItemText p {
+  margin-bottom: 24px;
+}
+
+.ItemText p:last-child {
+  margin-bottom: 0;
+}
+
+.ItemData {
+  display: flex;
+  justify-content: flex-start;
+  gap: 48px;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.ItemText {
+  opacity: 0.48;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.ItemTagContainer {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.ItemTag {
+  height: 40px;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 40px;
+  font-weight: 500;
+  text-align: center;
+  font-size: 16px;
+  line-height: 40px;
+  padding: 0 16px;
+  width: auto;
+  white-space: nowrap;
+}
+
+.ItemSocial {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 48px;
+  font-size: 14px;
+}
+
+.ItemSocialIcons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 32px;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .ItemContent > * {
+    margin-top: 0;
+    margin-bottom: 48px;
+  }
+
+  .ItemSection .backLink, .backlink, .ItemInnerContainer, .techNewsItemOther, .techNewsItemWhat {
+    margin-bottom: 48px;
+  }
+  .mainNewsItemImage, .ItemTitle, .ItemData {
+    margin-bottom: 24px;
+  }
+
+  .techNewsItemOther > *, .techNewsItemWhat > * {
+    margin-bottom: 24px;
+  }
+
+  .techNewsItemOther *:last-child, .techNewsItemWhat *:last-child {
+    margin-bottom: 0;
+  }
+
+  .ItemData > * {
+    margin-right: 48px;
+  }
+
+  .ItemTagContainer > * {
+    margin-right: 12px;
+    margin-bottom: 12px;
+  }
+
+  .ItemSocialIcons > * {
+    margin-right: 32px;
+    margin-top: 24px;
+  }
+}

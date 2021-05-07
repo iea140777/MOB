@@ -1,0 +1,40 @@
+.navContainer {
+  width: 100%;
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  padding: 37px 7.5%;
+}
+
+.headerLogo {
+  width: 56.79px;
+  height: 20px;
+}
+
+.navigationListContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: auto;
+  gap: 2.4vw;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .navigationListContainer a {
+    margin-left: 2.4vw;
+  }
+}
+
+.headerMenuButton {
+  display: none;
+  cursor: pointer;
+}
+
+.navigationListContainer > a {
+  display: block;
+  text-decoration: none;
+  white-space: nowrap;
+  color: black;
+  font-size: 1em;
+  font-family: "SF Pro Text medium";
+  font-weight: 500;
+}
