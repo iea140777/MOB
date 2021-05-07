@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         createChips(headerChipsBlock, listApplied[i]);
         chipsLine.appendChild(headerChipsBlock);
       }
-      headerChipsContainer.appendChildChild(chipsLine);
+      headerChipsContainer.appendChild(chipsLine);
     }
   }
 
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
       { opacity: '0.4' }
     ];
     const tagButtons = document.getElementsByClassName('needAnimation');
-    Array.from(tagButtons).forEach(button, function() {
+    Array.from(tagButtons).forEach(function(button) {
       const duration = 100000;
       let position = button.getBoundingClientRect().x;
       let windowWidth  = document.documentElement.clientWidth;
