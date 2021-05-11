@@ -61,7 +61,10 @@
   .mainDropdownMenuFooter {
     display: flex;
     justify-content: flex-start;
-    gap: 24px;
+  }
+
+  .mainDropdownMenuFooter a {
+    margin-right: 12px;
   }
 
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
