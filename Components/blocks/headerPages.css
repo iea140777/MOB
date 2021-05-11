@@ -13,9 +13,9 @@
   
 .headerPagesContentContainer {
   width: 600px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: 600px;
+  row-gap: 24px;
   margin: 0 0 48px 0;
 }
 
@@ -40,7 +40,6 @@
 }
 
 .headerPagesFilterButton {
-  display: block;
   width: 100%;
   height: 40px;
   background: #FFFFFF;
