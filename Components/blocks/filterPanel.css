@@ -24,8 +24,7 @@
 .FilterContent {
   width: 100%;
   display: grid;
-  align-items: flex-start;
-  gap: 24px;
+  row-gap: 24px;
   margin-bottom: 20px;
 } 
 
