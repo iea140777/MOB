@@ -57,18 +57,47 @@
 }
 
 .FilterCheckbox {
-  display: flex;
-  justify-content: flex-start;
-  gap: 12px;
+  display: block;
   align-items: center;
-  font-size: 16px;
-  line-height: 20px;
+  line-height: 10px;
 }
 
 .FilterCheckbox input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.FilterCheckbox > span {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.FilterCheckbox > span::before {
+  display: inline-block;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  content: '';
   width: 20px;
   height: 20px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  margin-right: 12px;
+  cursor: pointer;
 }
+
+.FilterCheckbox>input:checked+span::before {
+  border-color: #ffff;
+  background-image: url(../imgHeader/checked.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #0B63CB;
+}
+
 
 .FilterFooter {
   width: 100%;
@@ -99,6 +128,8 @@
   gap: 12px;
   padding: 0 12px;
 }
+
+
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .FilterContent > * {
