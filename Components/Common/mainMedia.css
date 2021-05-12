@@ -30,31 +30,10 @@
   
 @media screen and (max-width: 630px) {
   
-  h1 {
-    font-size: 48px;
-    line-height: 48px;
-  }
-
-  h2 {
-    font-size: 32px;
-    line-height: 32px;
-  }
-
   .ItemTitle {
     line-height: 36px;
   }
-
-  .main {
-    gap: 48px;
-  }
-
-  .mainSection {
-    padding-left: 12px;
-    padding-right: 12px;
-    max-width: 600px;
-    width: 100%;
-    gap: 24px;
-  }
+  
   .ItemSection {
     gap: 48px;
   }
@@ -70,23 +49,6 @@
     gap: 48px;
   }
 
-  .mainSectionMore {
-    height: 40px;
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  .mainSectionTitleExpand span {
-    display: none;
-  }
-
-  .mainSectionTitleExpand {
-    width: 47px;
-  }
-
-  .mainSectionTitleContainer {
-    gap: 24px;
-  }
   .mainTalksItem {
     grid-template-areas: 
     "title title"
