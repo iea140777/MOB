@@ -1,12 +1,7 @@
 
-.mainWhoTitleExpand {
-  width: 134px;
-}
-
 .mainWhoItemContainer {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
 .mainWhoItem {
@@ -16,7 +11,15 @@
   padding: 16px;
   display: flex;
   justify-content: flex-start;
-  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.mainWhoItem:nth-last-child(1) {
+  margin-bottom: 0;
+}
+
+.mainWhoItem > img {
+  margin-right: 24px;
 }
 
 .mainWhoItemData {
@@ -47,22 +50,8 @@
 
 .mainWhoItemSocial {
   display: flex;
-  gap: 16px;
 }
 .mainWhoItemSocial a {
   height: 24px;
-}
-
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  .mainWhoItemContainer > * {
-    margin-top: 16px;
-  }
-
-  .mainWhoItem > * {
-    margin-right: 24px;
-  }
-
-  .mainWhoItemSocial > * {
-    margin-right: 24px;
-  } 
+  margin-right: 16px;
 }
