@@ -39,16 +39,16 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
     flex-grow: 1;
   }
   .mainDropdownMenuList {
-    display: grid;
-    justify-content: flex-start;
-    grid-row-gap: 24px;
+    display: flex;
+    flex-direction: column;
   }
   
-  .mainDropdownMenuList a{
+  .mainDropdownMenuList a {
+    margin-bottom: 24px;
+    align-self: start;
     font-size: 30px;
     line-height: 28px;
     font-weight: bold;
@@ -62,15 +62,6 @@
   }
 
   .mainDropdownMenuFooter a {
-    margin-right: 12px;
+    margin-right: 24px;
   }
 
-  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    .mainDropdownMenuList > * {
-      margin-bottom: 24px;
-    }
-    .mainDropdownMenuFooter > * {
-      margin-right: 24px;
-    }
-  }
-  
