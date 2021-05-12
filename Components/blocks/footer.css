@@ -6,7 +6,7 @@
   background-color: black;
   color: white;
   padding: 40px 7.5%;
-  gap: 30px;
+  column-gap: 30px;
   grid-auto-flow: row;
 }
 
@@ -65,7 +65,7 @@
     grid-template-columns: 1fr 1fr;
     -ms-grid-columns: 1fr 32px 1fr;
     padding: 34px 12px 34px 12px;
-    gap: 32px;
+    column-gap: 30px;
   }
 
   .footerColumn:nth-child(3) {
