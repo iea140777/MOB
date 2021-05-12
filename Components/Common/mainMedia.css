@@ -1,14 +1,5 @@
-@media screen and (min-width: 1600px) {
-  .header {
-    background-size: 400px, 550px, 100%;
-    background-position: 5% 30px, 95% 100px, 0 0;
-  }
-}
 
 @media screen and (max-width: 1200px) {
-  .header {
-    background-position: -6.5% 70px, 105% 120px, 0 0;
-  } 
   .mainGetNewsSection {
     background-size: 22%, 8%, 100%;
     background-position: -5% 90px, 90% 28%, 0 0;
@@ -16,15 +7,6 @@
 }
 
 @media screen and  (max-width: 1000px) {
-  .header {
-    background-size: 35%, 52%, 100%;
-    background-position: 20% 70px, 85% 80px, 0 0;
-  } 
-
-  .headerContentContainer {
-    margin-top: 60vw;
-  }
-
   .mainGetNewsSection { 
     background-size: 20%, 6%, 100%;
     background-position: -8% 140px, 95% 28%, 0 0;
@@ -39,21 +21,12 @@
 } 
 
 @media screen and (max-width: 860px) {
-  .header {
-    background-size: 40%, 60%, 100%;
-  }
-
   .mainGetNewsSection {
     background: linear-gradient(135deg, rgba(171, 220, 255, 0.32) 0%, rgba(3, 150, 255, 0.32) 100%);
   }
 }
 
-@media screen and (max-width: 700px) {
-  .header {
-    background-size: 45%, 68%, 100%;
-    background-position: 5% 15px, 100% 45px, 0 0;
-  }
-} 
+
   
 @media screen and (max-width: 630px) {
   
@@ -71,20 +44,6 @@
     line-height: 36px;
   }
 
-  .header {
-    background-size: 50%, 70%, 100%;
-    background-position: 5% 15px, 95% 45px, 0 0;
-  }
-
-  .headerContentContainer {
-    margin-top: 65vw;
-    padding-left: 12px;
-    padding-right: 12px;
-    max-width: 600px;
-    width: 100%;
-    gap: 24px;
-  }
-
   .headerPagesContentContainer {
     padding-left: 12px;
     padding-right: 12px;
@@ -92,37 +51,7 @@
     width: 100%;
   }
 
-  .headerTextContainer {
-    gap: 24px;
-  }
-
-  .headerTextContainer p {
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  .headerSearchInput {
-    margin-top: 56px;
-  }
-
-  .headerTextButtons {
-    gap: 16px;
-  }
-
-  .headerTextButton {
-    width: 139px;
-    height: 40px;
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  .headerChipsContainer {
-    margin-bottom: 48px;
-  }
-
-  .headerChip {
-    opacity: 0.8;
-  }
+  
 
   .main {
     gap: 48px;
@@ -186,33 +115,7 @@
   }
 }
 
-
-@media screen and (max-width: 500px) {
-  .header {
-    background-size:  57%, 80%, 100%;
-    background-position: -5% 15px, 105% 45px, 0 0;
-  }
-  .headerContentContainer {
-    margin-top: 75vw;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .header {
-    background-size:  60%, 83%, 100%;
-    background-position: -8% 15px, 130% 45px, 0 0;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .header {
-    background-size:  65%, 93%, 100%;
-    background-position: -15% 15px, 300% 45px, 0 0;
-  }
-  .headerContentContainer {
-    margin-top: 90vw;
-  }
-  
+@media screen and (max-width: 400px) {  
   .FilterContainer {
     width: 100%;
     left: 0;
