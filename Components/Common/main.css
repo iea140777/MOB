@@ -1,27 +1,27 @@
 @font-face {
 	font-family: 'SF Pro Display Bold';
-	src: url('sf-ui-display-bold.ttf') format('truetype');
+	src: url('./fonts/sf-ui-display-bold.ttf') format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'SF Pro Text';
-	src: url('sf-ui-text-regular.ttf') format('truetype');
+	src: url('./fonts/sf-ui-text-regular.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'SF Pro Text medium';
-	src: url('sf-ui-text-medium.ttf') format('truetype');
+	src: url('./fonts/sf-ui-text-medium.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'SF Pro Text bold';
-	src: url('sf-ui-text-bold.ttf') format('truetype');
+	src: url('./fonts/sf-ui-text-bold.ttf') format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
@@ -41,9 +41,6 @@ html {
 body {
   width: 100%;
   min-width: 320px;
-  margin: 0;
-  padding: 0;
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -83,4 +80,17 @@ a {
 
 .mainHidden {
   display: none !important;
+}
+
+@media screen and (max-width: 630px) {
+  
+  h1 {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  h2 {
+    font-size: 32px;
+    line-height: 32px;
+  }
 }
