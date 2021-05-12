@@ -15,13 +15,10 @@
   display: flex;
   justify-content: flex-end;
   width: auto;
-  gap: 2.4vw;
 }
 
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  .navigationListContainer a {
-    margin-left: 2.4vw;
-  }
+.navigationListContainer a {
+  margin-left: 2.4vw;
 }
 
 .headerMenuButton {
@@ -34,7 +31,23 @@
   text-decoration: none;
   white-space: nowrap;
   color: black;
-  font-size: 1em;
+  font-size: 16px;
   font-family: "SF Pro Text medium";
   font-weight: 500;
+}
+
+@media screen and (max-width: 860px) {
+  .navigationListContainer {
+    display: none;
+  }
+
+  .headerMenuButton {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .navContainer {
+    padding: 12px 12px;
+  }
 }
