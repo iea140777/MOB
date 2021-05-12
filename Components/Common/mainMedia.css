@@ -44,15 +44,6 @@
     line-height: 36px;
   }
 
-  .headerPagesContentContainer {
-    padding-left: 12px;
-    padding-right: 12px;
-    max-width: 600px;
-    width: 100%;
-  }
-
-  
-
   .main {
     gap: 48px;
   }
@@ -121,4 +112,5 @@
     left: 0;
   }
 }
+
 
