@@ -1,0 +1,120 @@
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mainSection {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  padding: 80px 0;
+}
+
+.mainSection > div {
+  margin-bottom: 32px;
+}
+
+.mainBorder {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid;
+  border-top-color:  rgba(0, 0, 0, 0.08);
+  width: 100%;
+  height: 1px;
+  }
+    
+  .mainSection > .mainSectionTitleContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.mainSectionTitleContainer > * {
+  margin-bottom: 32px;
+}
+
+.mainSectionTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.mainSectionTitleExpand {
+  display: inline-block;
+  height: 40px;
+  padding: 0 16px;
+  font-weight: 500;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+
+.mainSectionTitleExpand a {
+  text-decoration: none;
+  color:#000000;
+}
+
+.mainSectionTitleText{
+  font-size: 16px;
+  line-height: 24px;
+  opacity: 0.48;
+}
+
+.mainSectionMore {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 48px;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.mainSectionMore span {
+  margin-right: 7px;
+}
+
+.mainSectionMore svg {
+  margin-top: 3px;
+}
+
+@media screen and (max-width: 630px) {
+  .mainSection {
+    padding: 48px 12px;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .mainSection > div {
+    margin-bottom: 24px;
+  }
+
+  .mainSectionTitleContainer > * {
+    margin-bottom: 24px;
+  }
+
+  .mainSectionMore {
+    height: 40px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .mainSectionTitleExpand span {
+    display: none;
+  }
+}

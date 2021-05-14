@@ -1,0 +1,97 @@
+
+.techNewsFilterBlocksContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  overflow: hidden;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  margin-top: 24px;
+}
+
+.techNewsFilterBlocksContainer h3 {
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.techNewsFilterBlockItem {
+  position: relative;
+  margin-right: 12px;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 220px;
+  height: 142px;
+  background:  rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.techNewsFilterBlockItem h3{
+  margin-bottom: 10px;
+}
+
+.techNewsFilterBlockItem::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 132px;
+  width: 115.18px;
+  height: 120px;
+  background: url(./img/newsTagXback.png);
+  background-repeat: no-repeat;
+  opacity: 0.16;
+} 
+
+.activeChoiceBlock {
+  order: -1;
+  background-color: black;
+  color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+}
+
+.techNewsFilterItemText {
+  list-style: none;
+}
+
+.techNewsFilterItemText li {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+.techNewsFilterChipsContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items:stretch;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.techNewsFilterChipsItem {
+  margin-right: 12px;
+  margin-top: 12px;
+  height: 40px;
+  width: auto;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 24px;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+}
+
+.activeChoiceChip {
+  background-color: black;
+  color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16);
+}

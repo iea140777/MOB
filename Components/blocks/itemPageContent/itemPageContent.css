@@ -1,0 +1,146 @@
+.main > .ItemSection {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.ItemSection > .backLink {
+  align-self: flex-start;
+  font-size: 12px;
+  margin-bottom: 64px;
+}
+
+.main > .ItemSection > * {
+ margin-bottom: 64px;
+}
+
+.backLink svg {
+  display: inline-block;
+  transform: rotate(180deg);
+}
+
+.ItemInnerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ItemInnerContainer > * {
+  margin-bottom: 32px;
+}
+.ItemInnerContainer > .ItemText {
+  opacity: 0.48;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 0;
+}
+
+.ItemText p {
+  margin-bottom: 32px;
+}
+
+.ItemText p:nth-last-child(1) {
+  margin-bottom: 0;
+}
+
+.ItemData {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.ItemData > span:nth-child(1) {
+  margin-right: 40px;
+}
+
+.ItemSection h3 {
+  font-family: 'SF Pro Text medium';
+  font-weight: 500;
+}
+
+.ItemContent > .ItemSection > .ItemTagContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 52px;
+}
+
+.ItemTag {
+  height: 40px;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 40px;
+  font-weight: 500;
+  text-align: center;
+  font-size: 16px;
+  line-height: 40px;
+  padding: 0 16px;
+  width: auto;
+  white-space: nowrap;
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+
+.ItemTag:nth-last-child(1) {
+  margin-right: 0;
+}
+
+.ItemSocial {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 64px;
+  margin-top: 64px;
+  font-size: 14px;
+}
+
+.ItemSocialIcons {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 24px;
+}
+
+.ItemSocialIcons a {
+  margin-right: 32px;
+}
+
+.ItemSocialIcons a:nth-last-child(1) {
+  margin-right: 0;
+}
+
+@media screen and (max-width: 630px) {
+  .main > .ItemSection > * {
+    margin-bottom: 48px;
+   }
+
+   .ItemContent > .ItemSection > .ItemTagContainer {
+    margin-bottom: 36px;
+  }
+
+  .ItemSection > .backLink {
+    margin-bottom: 48px;
+  }
+
+  .ItemInnerContainer > * {
+    margin-bottom: 24px;
+  }
+
+  .ItemText p {
+    margin-bottom: 24px;
+  }
+
+  .ItemTitle {
+    line-height: 36px;
+  }
+  
+  .ItemSocial {
+  padding-left: 12px;
+  padding-right: 12px;
+  max-width: 600px;
+  width: 100%;
+  margin-bottom: 48px;
+  margin-top: 48px;
+  }
+
+}
