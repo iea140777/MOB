@@ -1,27 +1,27 @@
 @font-face {
 	font-family: 'SF Pro Display Bold';
-	src: url('./fonts/sf-ui-display-bold.ttf') format('truetype');
+	src: url('sf-ui-display-bold.ttf') format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'SF Pro Text';
-	src: url('./fonts/sf-ui-text-regular.ttf') format('truetype');
+	src: url('sf-ui-text-regular.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'SF Pro Text medium';
-	src: url('./fonts/sf-ui-text-medium.ttf') format('truetype');
+	src: url('sf-ui-text-medium.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'SF Pro Text bold';
-	src: url('./fonts/sf-ui-text-bold.ttf') format('truetype');
+	src: url('sf-ui-text-bold.ttf') format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
