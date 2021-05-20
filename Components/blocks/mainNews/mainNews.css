@@ -1,0 +1,121 @@
+.mainNewsTitleChipContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  width: 100%;
+  overflow: hidden;
+}
+.mainNewsTitleChip {
+  display: inline-block;
+  height: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 40px;
+  text-align: center;
+  margin-right: 24px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.mainNewsTitleChip:nth-child(1) {
+  border: 1px solid #000000;
+  padding: 0 16px;
+  border-radius: 8px;
+}
+
+.mainNewsItem {
+  width: 100%;
+  border: 1px solid rgba(35, 11, 203, 0.16);
+  border-radius: 8px;
+  overflow: hidden;
+  background-image: -o-linear-gradient(36.6deg, rgba(38, 11, 203, 0.08) -5.95%, rgba(114, 187, 228, 0.08) 106.51%);
+  background-image: linear-gradient(53.4deg, rgba(38, 11, 203, 0.08) -5.95%, rgba(114, 187, 228, 0.08) 106.51%);
+}
+
+.mainNewsItemImage {
+  width: 100%;
+  overflow: hidden;
+  display: block;
+}
+
+.mainNewsItemInnerContainer {
+  padding: 16px 16px 4px 16px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.mainNewsItemTitle, .mainNewsItemData, .mainNewsItemText {
+  margin-bottom: 24px;
+}
+
+.mainNewsItemTitle {
+  cursor: pointer;
+}
+
+.mainNewsItemTitle svg {
+  margin-left: 2px;
+  vertical-align: middle;
+}
+
+.mainNewsItemData {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.mainNewsItemDate {
+  margin-right: 48px;
+}
+
+.mainNewsItemText {
+  opacity: 0.48;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.mainNewsItemTagContainer {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.mainNewsItemTag {
+  height: 40px;
+  background-color: #FFFFFF;
+  border-radius: 40px;
+  font-weight: 500;
+  text-align: center;
+  font-size: 16px;
+  line-height: 40px;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  padding: 0 16px;
+  width: auto;
+  white-space: nowrap;
+}
+

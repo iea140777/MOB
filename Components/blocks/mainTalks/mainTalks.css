@@ -1,0 +1,109 @@
+
+.mainTalksItem {
+    width: 100%;
+    padding: 14px;
+    background: -o-linear-gradient(315deg, rgba(255, 233, 133, 0.16) 0%, rgba(250, 116, 43, 0.16) 100%);
+    background: linear-gradient(135deg, rgba(255, 233, 133, 0.16) 0%, rgba(250, 116, 43, 0.16) 100%);
+    border: 1px solid rgba(250, 116, 43, 0.16);
+    border-radius: 8px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: auto 24px auto 24px auto;
+        grid-template: 
+    "title title title"
+    "play play data"
+    "text text text";
+    -ms-grid-columns: 1fr 24px 1fr 24px 1fr;
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-gap: 24px;
+  }
+
+  .mainTalksItemTitle {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 5;
+    display: inline-block;
+    grid-area: title;
+  }
+
+  .mainTalksItemTitle svg {
+    margin-left: 2px;
+    vertical-align: middle;
+  }
+
+  .mainTalksItemPlay {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
+    grid-area: play;
+    width: 100%;
+    height: 40px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+  }
+
+  .mainTalksItemPlay span{
+    margin-right: 4px;
+  }
+
+  .mainTalksItemData {
+    -ms-grid-row: 3;
+    -ms-grid-column: 5;
+    grid-area: data;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .mainTalksItemText {
+    display: inline-block;
+    -ms-grid-row: 5;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 5;
+    grid-area: text;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  @media screen and (max-width: 630px) {
+    .mainTalksItem {
+          -ms-grid-rows: auto 24px auto 24px auto;
+              grid-template-areas: 
+      "title title"
+      "play data"
+      "text text";
+      -ms-grid-columns: 1fr 24px 1fr;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .mainTalksItemTitle {
+      -ms-grid-row: 1;
+      -ms-grid-column: 1;
+      -ms-grid-column-span: 3;
+    }
+
+    .mainTalksItemPlay {
+      -ms-grid-row: 3;
+      -ms-grid-column: 1;
+      -ms-grid-column-span: 1;
+  }
+
+  .mainTalksItemData {
+    -ms-grid-row: 3;
+    -ms-grid-column: 3;
+  }
+}

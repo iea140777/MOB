@@ -1,0 +1,17 @@
+.whoSection {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.whoSection p {
+  opacity: 0.48;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@media screen and (max-width: 630px) {
+  .whoSection {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
