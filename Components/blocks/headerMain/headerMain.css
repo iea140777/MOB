@@ -232,20 +232,18 @@
   width: auto;
   white-space: nowrap;
   cursor: pointer;
-  opacity: 0.4;
+  opacity: 0.8;
 }
 
 @-webkit-keyframes header-move { 
   0% { 
     -webkit-transform: translateX(0); 
             transform: translateX(0);
-    /* opacity: 0.4; */
   } 
   
   100% {
     -webkit-transform: translateX(-100%);
             transform: translateX(-100%);
-    /* opacity: 0.4; */
  }
 }
 
