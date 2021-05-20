@@ -1,0 +1,114 @@
+@font-face {
+	font-family: 'SF Pro Display Bold';
+	src: url('./fonts/sf-ui-display-bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SF Pro Text';
+	src: url('./fonts/sf-ui-text-regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SF Pro Text medium';
+	src: url('./fonts/sf-ui-text-medium.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SF Pro Text bold';
+	src: url('./fonts/sf-ui-text-bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%; 
+}
+
+body {
+  width: 100%;
+  min-width: 320px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-family: 'SF Pro Text medium', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-family: 'SF Pro Display Bold', sans-serif;
+    font-size: 64px;
+    line-height:  64px;
+  }
+
+h2 {
+    margin: 0;
+    padding: 0;
+    font-family: 'SF Pro Display Bold', sans-serif;
+    font-size: 48px;
+    line-height: 48px;
+}
+
+h3 {
+  margin: 0;
+  padding: 0;
+  font-family: 'SF Pro Text bold', sans-serif;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+a, p > a {
+  text-decoration: none;
+  color:#000000;
+}
+
+p > a {
+  cursor: pointer;
+  font-style: italic;
+}
+
+p > a:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.mainHidden {
+  display: none !important;
+}
+
+@media screen and (max-width: 630px) {
+  
+  h1 {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  h2 {
+    font-size: 32px;
+    line-height: 32px;
+  }
+}
