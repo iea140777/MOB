@@ -1,0 +1,12 @@
+@import url('../Components/Common/normalize.css');
+@import url('../Components/Common/main.css');
+
+@import url('../Components/blocks/headerNavMenu/headerNavMenu.css');
+@import url('../Components/blocks/headerPages/headerPages.css');
+@import url('../Components/blocks/backlink/backlink.css');
+@import url('../Components/blocks/footer/footer.css');
+@import url('../Components/blocks/mainContent/mainContent.css');
+@import url('../Components/blocks/sectionPageContent/sectionPageContent.css');
+@import url('../Components/blocks/mainGetNews/mainGetNews.css');
+@import url('../Components/blocks/mainWho/mainWho.css');
+@import url('../Components/blocks/whoContent/whoContent.css');
