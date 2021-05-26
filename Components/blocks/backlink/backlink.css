@@ -1,0 +1,34 @@
+.backLink {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-left: calc(7.5% - 12px);
+}
+
+.backLink a {
+  display: inline-block;
+  padding: 12px;
+}
+
+.backLink svg {
+  display: inline-block;
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+  width: 14.6px;
+  height: 12px;
+}
+
+@media screen and (max-width: 860px) {
+  .backLink {
+    margin-bottom: 28px;
+    margin-left: 0;
+    font-size: 12px;
+  }
+
+  .backLink svg {
+    width: 11px;
+    height: 9px;
+  }
+}

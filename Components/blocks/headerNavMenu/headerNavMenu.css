@@ -1,0 +1,78 @@
+@import url('headerDropdownMenu.css');
+
+.navContainer {
+  width: 100%;
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+  -webkit-box-pack:justify;
+      -ms-flex-pack:justify;
+          justify-content:space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 40px 7.5% 44px 7.5%;
+}
+
+.headerLogo {
+  width: 56.79px;
+  height: 20px;
+}
+
+.navigationListContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: auto;
+}
+
+.navigationListContainer a {
+  margin-left: 2.4vw;
+}
+
+.menuButtonContainer {
+  display: none;
+  width: 48px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.48);
+  border-radius: 100px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.headerMenuButton {
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.navigationListContainer > a {
+  display: block;
+  text-decoration: none;
+  white-space: nowrap;
+  color: black;
+  font-size: 16px;
+  font-family: "SF Pro Text medium";
+  font-weight: 500;
+}
+
+@media screen and (max-width: 860px) {
+  .navContainer {
+    padding: 22px 12px 8px 12px;
+  }
+
+  .navigationListContainer {
+    display: none;
+  }
+
+  .menuButtonContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+
