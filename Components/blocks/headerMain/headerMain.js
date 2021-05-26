@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (headerChipsContainer) {
     createTagBlocks();
     if (windowWidth > 631)  {
-      animateOpacity ();
+//       animateOpacity ();
     };
   }
 
