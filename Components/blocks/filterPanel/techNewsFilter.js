@@ -69,17 +69,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const filterInterestContainer = Filter.querySelector('.techNewsFilterInterest');
   const filterInterestInputs = filterInterestContainer.getElementsByTagName('input');
   const filterBlockItems = filterBlocksContainer.querySelectorAll('.techNewsFilterBlockItem');
-  const filterChipItems = filterChipsContainer.getElementsByClassName('techNewsFilterChipsItem');
+  const filterChipItems = filterChipsContainer.querySelectorAll('.techNewsFilterChipsItem');
   const filterApplyButton = Filter.querySelector('.FilterFooter');
   const filterClearButton = Filter.querySelector('.FilterClear');
   
   createFilterCheckboxes();
-  
+ 
   const checkAllPlatformInput = document.getElementById('All Platforms');
   const checkAllInterestInput = document.getElementById('All_Interest');
-  const techNewsInputs = Filter.getElementsByTagName('input');
+  const techNewsInputs = Filter.querySelectorAll('input');
+  
   
   showCheckedFilters();
+  animateBlocks();
 
   filterClearButton.addEventListener('click', function () {
     clearAllFilters(techNewsInputs);
@@ -100,6 +102,8 @@ document.addEventListener("DOMContentLoaded", function () {
   closeFilter.addEventListener('click', function () {
     showCheckedFilters();
   });
+
+   
 
   //------------------ CREATE FILTER BLOCKS-----------------
   function addFilterBlocks () {
@@ -126,6 +130,53 @@ document.addEventListener("DOMContentLoaded", function () {
   };
   //------------------END CREATE FILTER BLOCKS------------------
 
+  //------------------START ANIMATE FILTER BLOCKS------------------
+  function animateBlocks() {
+    for (let i = 0; i < filterBlockItems.length; i++) {
+      filterBlockItems[i].addEventListener('dblclick', function(e) {
+        e.preventDefault();
+        let containerPosition = filterBlocksContainer.getBoundingClientRect().x;
+        let blockPosition = filterBlockItems[i].getBoundingClientRect().x;
+        
+        filterBlockItems.forEach(function (block) {
+          if (block.classList.contains('activeChoiceBlock')) {
+            block.classList.remove('activeChoiceBlock');
+          }
+        });
+        filterBlockItems[i].classList.add('activeChoiceBlock');
+        filterBlocksContainer.style.left = containerPosition - blockPosition + 'px';
+        updateFilters ('block');
+      }, false)
+    }
+  }
+  
+  const headerContentContainer = document.querySelector('.headerPagesContentContainer');
+  
+  filterBlocksContainer.addEventListener('mousedown', function (e) {
+    handleBlocksMove(e);
+  })
+
+  function handleBlocksMove (e) {
+    let mousePos = e.clientX;
+    let containerPos = headerContentContainer.getBoundingClientRect().x;
+    let blocksPos = filterBlocksContainer.getBoundingClientRect().x;
+    let shift = blocksPos - containerPos;
+    let minPosition = - 232 * (filterBlockItems.length - 1);
+    let maxPosition = 0;
+    document.onmousemove = function (e) {
+      mouseMove = e.clientX ;
+      let newPos = mouseMove - mousePos + shift;
+      if (newPos > maxPosition) {newPos = maxPosition};
+      if (newPos < minPosition) {newPos = minPosition};
+      filterBlocksContainer.style.left = newPos + 'px';
+    };
+    document.addEventListener('mouseup', function () {
+      document.onmousemove = null;
+    });
+  }
+  
+  //------------------END ANIMATE FILTER BLOCKS------------------
+
   //------------------ CREATE FILTER CHIPS--------------------
   function addFilterChips () {
     filterList.unshift({title: 'All Platforms', description: []});
@@ -135,6 +186,10 @@ document.addEventListener("DOMContentLoaded", function () {
       filterChipItem.setAttribute('title', item.title);
       filterChipItem.textContent = item.title;
       filterChipsContainer.appendChild(filterChipItem);
+      filterChipItem.addEventListener('click', function () {
+        filterChipItem.classList.toggle('activeChoiceChip');
+        updateFilters ('chip');
+      })  
     })
   };
   //------------------END CREATE FILTER CHIPS------------------
@@ -160,7 +215,32 @@ document.addEventListener("DOMContentLoaded", function () {
   //------------------END CREATE FILTER CHECKBOXES IN FILTER PANEL-----------------
 
   //------------------CHANGE FILTERS------------------------
-  
+  function updateFilters (type) {
+    clearAllFilters(techNewsInputs);
+    if (type === 'block') {
+      for (let i = 0; i < filterBlockItems.length; i++) {
+        if (filterBlockItems[i].classList.contains('activeChoiceBlock')){
+          for (let j = 0; j < techNewsInputs.length; j++) {
+            if (techNewsInputs[j].id === filterBlockItems[i].title) {
+              techNewsInputs[j].checked = true;
+            }
+          };
+        }
+      }
+    }
+    if (type === 'chip') {
+      for (let i = 0; i < filterChipItems.length; i++) {
+        if (filterChipItems[i].classList.contains('activeChoiceChip')){
+          for (let j = 0; j < techNewsInputs.length; j++) {
+            if (techNewsInputs[j].id === filterChipItems[i].title) {
+              techNewsInputs[j].checked = true;
+            }
+          };
+        }
+      }
+    }
+  };
+
   function getCheckedFilters (inputs) {
     let checkedFilters=[];
     for (let i = 0; i < inputs.length; i++) {
@@ -215,6 +295,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
       choice.classList.add('activeChoiceBlock');
+      let containerPosition = filterBlocksContainer.getBoundingClientRect().x;
+      let blockPosition = choice.getBoundingClientRect().x;
+      filterBlocksContainer.style.left = containerPosition - blockPosition + 'px';
     }
     else if (checkedPlatformItems.length === 0) {
       filterChipsContainer.classList.add('mainHidden');
