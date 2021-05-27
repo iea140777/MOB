@@ -155,8 +155,13 @@ document.addEventListener("DOMContentLoaded", function () {
   filterBlocksContainer.addEventListener('mousedown', function (e) {
     handleBlocksMove(e);
   })
+  filterBlocksContainer.addEventListener('touchstart', function (e) {
+    handleBlocksTouchMove(e);
+  })
+
 
   function handleBlocksMove (e) {
+    e.preventDefault();
     let mousePos = e.clientX;
     let containerPos = headerContentContainer.getBoundingClientRect().x;
     let blocksPos = filterBlocksContainer.getBoundingClientRect().x;
@@ -174,7 +179,27 @@ document.addEventListener("DOMContentLoaded", function () {
       document.onmousemove = null;
     });
   }
-  
+
+  function handleBlocksTouchMove (e) {
+    e.preventDefault();
+    let mousePos = e.changedTouches[0].clientX;
+    let containerPos = headerContentContainer.getBoundingClientRect().x;
+    let blocksPos = filterBlocksContainer.getBoundingClientRect().x;
+    let shift = blocksPos - containerPos;
+    let minPosition = - 232 * (filterBlockItems.length - 1);
+    let maxPosition = 0;
+    document.ontouchmove = function (e) {
+      let mouseMove = e.changedTouches[0].clientX ;
+      let newPos = mouseMove - mousePos + shift;
+      if (newPos > maxPosition) {newPos = maxPosition};
+      if (newPos < minPosition) {newPos = minPosition};
+      filterBlocksContainer.style.left = newPos + 'px';
+    };
+    document.addEventListener('ontouchend', function () {
+      document.ontouchmove = null;
+    });
+  }
+
   //------------------END ANIMATE FILTER BLOCKS------------------
 
   //------------------ CREATE FILTER CHIPS--------------------
