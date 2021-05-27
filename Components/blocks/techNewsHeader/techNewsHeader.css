@@ -1,5 +1,6 @@
-
 .techNewsFilterBlocksContainer {
+  position: relative;
+  left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -15,6 +16,7 @@
       flex-shrink: 0;
   width: auto;
   margin-top: 24px;
+  overflow: visible;
 }
 
 .techNewsFilterBlocksContainer h3 {
@@ -40,6 +42,11 @@
   height: 142px;
   background:  rgba(0, 0, 0, 0.08);
   overflow: hidden;
+  cursor: pointer;
+}
+
+.techNewsFilterBlockItem > * {
+  user-select: none;
 }
 
 .techNewsFilterBlockItem h3{
@@ -59,14 +66,13 @@
 } 
 
 .activeChoiceBlock {
-  -webkit-box-ordinal-group: 0;
-      -ms-flex-order: -1;
-          order: -1;
   background-color: black;
   color: white;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16);
           box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16);
   overflow: hidden;
+  /* position: absolute; */
+  left: 0;
 }
 
 .techNewsFilterItemText {
@@ -107,6 +113,8 @@
   height: 40px;
   width: auto;
   padding: 8px 16px;
+  cursor: pointer;
+  user-select: none;
   background: rgba(0, 0, 0, 0.08);
   border-radius: 8px;
   font-size: 16px;
