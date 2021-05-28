@@ -156,50 +156,57 @@ document.addEventListener("DOMContentLoaded", function () {
     let shift = blocksPos - containerPos;
     let minPosition = - 232 * (filterBlockItems.length - 1);
     let maxPosition = 0;
-      document.onmousemove = function (e) {
-        let mouseMove = e.clientX ;
-        let newPos = mouseMove - mouseStart + shift;
-        if (newPos > maxPosition) {newPos = maxPosition};
-        if (newPos < minPosition) {newPos = minPosition};
-        filterBlocksContainer.style.left = newPos + 'px';
-      };
-      document.addEventListener('mouseup', function (e) {
-        let t2 = Date.now();
-        let mouseFinish = e.clientX ;
-        if ((t2-t1) < clickDuration && (mouseFinish - mouseStart) < 10) {
-          let blockClick = new Event("blockClick");
-          e.target.dispatchEvent(blockClick);
-        }
-        document.onmousemove = null;
-      });
+    document.onmousemove = function (e) {
+      let mouseMove = e.clientX ;
+      let newPos = mouseMove - mouseStart + shift;
+      if (newPos > maxPosition) {newPos = maxPosition};
+      if (newPos < minPosition) {newPos = minPosition};
+      filterBlocksContainer.style.left = newPos + 'px';
+    };
+    document.addEventListener('mouseup', function (e) {
+      let t2 = Date.now();
+      let mouseFinish = e.clientX ;
+      if ((t2-t1) < clickDuration && Math.abs(mouseFinish - mouseStart) < 10) {
+        let blockClick = new Event("blockClick");
+        e.target.dispatchEvent(blockClick);
+      }
+      document.onmousemove = null;
+    });
   };
   
   function handleBlocksTouchMove (e) {
     e.preventDefault();
     let touchDuration = 500;
-    let t1 = Date.now();
+    let d1 = Date.now();
+    console.log('start', d1);
     let touchStart = e.changedTouches[0].clientX;
     let containerPos = headerContentContainer.getBoundingClientRect().x;
     let blocksPos = filterBlocksContainer.getBoundingClientRect().x;
     let shift = blocksPos - containerPos;
     let minPosition = - 232 * (filterBlockItems.length - 1);
     let maxPosition = 0;
-      document.ontouchmove = function (e) {
-        let touchMove = e.changedTouches[0].clientX;
-        let newPos = touchMove - touchStart + shift;
-        if (newPos > maxPosition) {newPos = maxPosition};
-        if (newPos < minPosition) {newPos = minPosition};
-        filterBlocksContainer.style.left = newPos + 'px';
-      };
-      document.addEventListener('touchend', function (e) {
-        let t2 = Date.now();
-        let touchFinish = e.clientX ;
-        if ((t2-t1) < touchDuration && (touchFinish - touchStart) < 10) {
-          let blockClick = new Event("blockClick");
-          e.target.dispatchEvent(blockClick);
-        }
-        document.ontouchmove = null;
-      });
+    document.ontouchmove = function (e) {
+      let touchMove = e.changedTouches[0].clientX;
+      let newPos = touchMove - touchStart + shift;
+      if (newPos > maxPosition) {newPos = maxPosition};
+      if (newPos < minPosition) {newPos = minPosition};
+      filterBlocksContainer.style.left = newPos + 'px';
+    };
+    document.addEventListener('touchend', function (e) {
+      let d2 = Date.now();
+      console.log('end', d2);
+      let touchFinish = e.changedTouches[0].clientX ;
+      console.log('duration', d2-d1);
+      console.log('touch1', touchStart);
+      console.log('touch2', touchFinish);
+      console.log('touchMove', touchFinish - touchStart);
+      if ((d2-d1) < touchDuration && Math.abs(touchFinish - touchStart) < 10) {
+        console.log('click');
+        let blockClick = new Event("blockClick");
+        e.target.dispatchEvent(blockClick);
+      }
+      document.ontouchmove = null;
+    });
   }
 
   function clickBlocks() {
