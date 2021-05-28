@@ -216,7 +216,11 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         });
         filterBlockItems[i].classList.add('activeChoiceBlock');
+        filterBlocksContainer.classList.add('blockContainerClicked');
         filterBlocksContainer.style.left = containerPosition - blockPosition + 'px';
+        filterBlocksContainer.addEventListener('transitionend', function () {
+          filterBlocksContainer.classList.remove('blockContainerClicked');
+        })
         updateFilters ('block');
       })
     }
