@@ -58,7 +58,8 @@ document.addEventListener("DOMContentLoaded", function () {
   
   const filterChipsContainer = document.querySelector('.techNewsFilterChipsContainer');
   const filterBlocksContainer = document.querySelector('.techNewsFilterBlocksContainer');
-  
+  const headerContentContainer = document.querySelector('.headerPagesContentContainer');
+
   addFilterBlocks();
   addFilterChips();
   
@@ -109,6 +110,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function addFilterBlocks () {
     filterList.forEach(function (item) {
       let filterBlockItem = document.createElement('div');
+      let filterBlockItemCover = document.createElement('div');
+      filterBlockItemCover.classList.add('blockCover');
       filterBlockItem.classList.add('techNewsFilterBlockItem');
       filterBlockItem.setAttribute('title', item.title);
       let filterBlockItemTitle = document.createElement('h3');
@@ -123,6 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       };
       createDescription();
+      filterBlockItem.appendChild(filterBlockItemCover);
       filterBlockItem.appendChild(filterBlockItemTitle);
       filterBlockItem.appendChild(filterBlockItemDescription);
       filterBlocksContainer.appendChild(filterBlockItem);
@@ -131,9 +135,77 @@ document.addEventListener("DOMContentLoaded", function () {
   //------------------END CREATE FILTER BLOCKS------------------
 
   //------------------START ANIMATE FILTER BLOCKS------------------
-  function animateBlocks() {
+  function animateBlocks () {
+    clickBlocks();
+    filterBlocksContainer.addEventListener('mousedown', function (e) {
+          handleBlocksMouseMove(e);
+    }, false)
+
+    filterBlocksContainer.addEventListener('touchstart', function (e) {
+      handleBlocksTouchMove(e);
+    }, false)
+  }
+
+  function handleBlocksMouseMove (e) {
+    e.preventDefault();
+    let clickDuration = 200;
+    let t1 = Date.now();
+    let mouseStart = e.clientX;
+    let containerPos = headerContentContainer.getBoundingClientRect().x;
+    let blocksPos = filterBlocksContainer.getBoundingClientRect().x;
+    let shift = blocksPos - containerPos;
+    let minPosition = - 232 * (filterBlockItems.length - 1);
+    let maxPosition = 0;
+      document.onmousemove = function (e) {
+        let mouseMove = e.clientX ;
+        let newPos = mouseMove - mouseStart + shift;
+        if (newPos > maxPosition) {newPos = maxPosition};
+        if (newPos < minPosition) {newPos = minPosition};
+        filterBlocksContainer.style.left = newPos + 'px';
+      };
+      document.addEventListener('mouseup', function (e) {
+        let t2 = Date.now();
+        let mouseFinish = e.clientX ;
+        if ((t2-t1) < clickDuration && (mouseFinish - mouseStart) < 10) {
+          let blockClick = new Event("blockClick");
+          e.target.dispatchEvent(blockClick);
+        }
+        document.onmousemove = null;
+      });
+  };
+  
+  function handleBlocksTouchMove (e) {
+    e.preventDefault();
+    let touchDuration = 500;
+    let t1 = Date.now();
+    let touchStart = e.changedTouches[0].clientX;
+    let containerPos = headerContentContainer.getBoundingClientRect().x;
+    let blocksPos = filterBlocksContainer.getBoundingClientRect().x;
+    let shift = blocksPos - containerPos;
+    let minPosition = - 232 * (filterBlockItems.length - 1);
+    let maxPosition = 0;
+      document.ontouchmove = function (e) {
+        let touchMove = e.changedTouches[0].clientX;
+        let newPos = touchMove - touchStart + shift;
+        if (newPos > maxPosition) {newPos = maxPosition};
+        if (newPos < minPosition) {newPos = minPosition};
+        filterBlocksContainer.style.left = newPos + 'px';
+      };
+      document.addEventListener('touchend', function (e) {
+        let t2 = Date.now();
+        let touchFinish = e.clientX ;
+        if ((t2-t1) < touchDuration && (touchFinish - touchStart) < 10) {
+          let blockClick = new Event("blockClick");
+          e.target.dispatchEvent(blockClick);
+        }
+        document.ontouchmove = null;
+      });
+  }
+
+  function clickBlocks() {
     for (let i = 0; i < filterBlockItems.length; i++) {
-      filterBlockItems[i].addEventListener('dblclick', function(e) {
+      let cover = filterBlockItems[i].querySelector('.blockCover');
+      cover.addEventListener('blockClick', function (e) {
         e.preventDefault();
         let containerPosition = filterBlocksContainer.getBoundingClientRect().x;
         let blockPosition = filterBlockItems[i].getBoundingClientRect().x;
@@ -146,58 +218,8 @@ document.addEventListener("DOMContentLoaded", function () {
         filterBlockItems[i].classList.add('activeChoiceBlock');
         filterBlocksContainer.style.left = containerPosition - blockPosition + 'px';
         updateFilters ('block');
-      }, false)
+      })
     }
-  }
-  
-  const headerContentContainer = document.querySelector('.headerPagesContentContainer');
-  
-  filterBlocksContainer.addEventListener('mousedown', function (e) {
-    handleBlocksMove(e);
-  })
-  filterBlocksContainer.addEventListener('touchstart', function (e) {
-    handleBlocksTouchMove(e);
-  })
-
-
-  function handleBlocksMove (e) {
-    e.preventDefault();
-    let mousePos = e.clientX;
-    let containerPos = headerContentContainer.getBoundingClientRect().x;
-    let blocksPos = filterBlocksContainer.getBoundingClientRect().x;
-    let shift = blocksPos - containerPos;
-    let minPosition = - 232 * (filterBlockItems.length - 1);
-    let maxPosition = 0;
-    document.onmousemove = function (e) {
-      mouseMove = e.clientX ;
-      let newPos = mouseMove - mousePos + shift;
-      if (newPos > maxPosition) {newPos = maxPosition};
-      if (newPos < minPosition) {newPos = minPosition};
-      filterBlocksContainer.style.left = newPos + 'px';
-    };
-    document.addEventListener('mouseup', function () {
-      document.onmousemove = null;
-    });
-  }
-
-  function handleBlocksTouchMove (e) {
-    e.preventDefault();
-    let mousePos = e.changedTouches[0].clientX;
-    let containerPos = headerContentContainer.getBoundingClientRect().x;
-    let blocksPos = filterBlocksContainer.getBoundingClientRect().x;
-    let shift = blocksPos - containerPos;
-    let minPosition = - 232 * (filterBlockItems.length - 1);
-    let maxPosition = 0;
-    document.ontouchmove = function (e) {
-      let mouseMove = e.changedTouches[0].clientX ;
-      let newPos = mouseMove - mousePos + shift;
-      if (newPos > maxPosition) {newPos = maxPosition};
-      if (newPos < minPosition) {newPos = minPosition};
-      filterBlocksContainer.style.left = newPos + 'px';
-    };
-    document.addEventListener('ontouchend', function () {
-      document.ontouchmove = null;
-    });
   }
 
   //------------------END ANIMATE FILTER BLOCKS------------------
