@@ -195,7 +195,6 @@ document.addEventListener("DOMContentLoaded", function () {
       let d2 = Date.now();
       let touchFinish = e.changedTouches[0].clientX;
       if ((d2-d1) < touchDuration && Math.abs(touchFinish - touchStart) < 10) {
-        console.log('click');
         let blockClick = new Event("blockClick");
         e.target.dispatchEvent(blockClick);
       }
