@@ -351,10 +351,10 @@ document.addEventListener("DOMContentLoaded", function () {
       filterBlocksContainer.style.left = containerPosition - blockPosition + 'px';
     }
     else if (checkedPlatformItems.length === 0) {
-      filterChipsContainer.classList.add('mainHidden');
-      filterBlocksContainer.classList.remove('mainHidden'); 
+      filterChipsContainer.classList.remove('mainHidden');
+      filterBlocksContainer.classList.add('mainHidden'); 
       for (let i = 0; i < filterChipItems.length; i++) {
-        filterChipItems[i].classList.remove('activeChoiceChip');
+        filterChipItems[i].classList.add('activeChoiceChip');
       }
       for (let i = 0; i < filterBlockItems.length; i++) {
         filterBlockItems[i].classList.remove('activeChoiceChip');
