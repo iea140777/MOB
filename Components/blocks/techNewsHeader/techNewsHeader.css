@@ -19,6 +19,10 @@
   overflow: visible;
 }
 
+.blockContainerClicked {
+  transition: left 0.5s ease-in-out;
+}
+
 .techNewsFilterBlocksContainer h3 {
   font-size: 24px;
   line-height: 28px;
