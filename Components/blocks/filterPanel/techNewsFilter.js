@@ -178,7 +178,6 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
     let touchDuration = 500;
     let d1 = Date.now();
-    console.log('start', d1);
     let touchStart = e.changedTouches[0].clientX;
     let containerPos = headerContentContainer.getBoundingClientRect().x;
     let blocksPos = filterBlocksContainer.getBoundingClientRect().x;
@@ -194,12 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     document.addEventListener('touchend', function (e) {
       let d2 = Date.now();
-      console.log('end', d2);
-      let touchFinish = e.changedTouches[0].clientX ;
-      console.log('duration', d2-d1);
-      console.log('touch1', touchStart);
-      console.log('touch2', touchFinish);
-      console.log('touchMove', touchFinish - touchStart);
+      let touchFinish = e.changedTouches[0].clientX;
       if ((d2-d1) < touchDuration && Math.abs(touchFinish - touchStart) < 10) {
         console.log('click');
         let blockClick = new Event("blockClick");
@@ -371,7 +365,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       redDot.classList.add('mainHidden');
     }
-    console.log(choiceTotal);
     return choiceTotal;
   }
 })
