@@ -1,126 +1,80 @@
+"use strict";
+
 document.addEventListener("DOMContentLoaded", function () {
-  const filterContainer = document.querySelector('.FilterContainer');
-  const Filter = document.querySelector('.Filter');
-  const openFilter = document.querySelector('.headerPagesFilterButton');
-  const closeFilter = Filter.querySelector('.FilterClose');
-
-//------------------ CREATE TECHNEWS FILTER CHECKBOXES, BLOCKS & CHIPS-------------------------
-  
+  var filterContainer = document.querySelector('.FilterContainer');
+  var Filter = document.querySelector('.Filter');
+  var openFilter = document.querySelector('.headerPagesFilterButton');
+  var closeFilter = Filter.querySelector('.FilterClose'); //------------------ CREATE TECHNEWS FILTER CHECKBOXES, BLOCKS & CHIPS-------------------------
   //------------------ START FILTERS LIST--------------------
-  const filterList = [
-    {
+
+  var filterList = [{
     title: 'iOS',
-    description: [
-      'Cross-Platform',
-      'React libraries',
-      'Xamarin.Mac',
-      'Platform SDKs'
-    ]
-  },
-  {
+    description: ['Cross-Platform', 'React libraries', 'Xamarin.Mac', 'Platform SDKs']
+  }, {
     title: 'Android',
-    description: [
-      'Cross-Platform',
-      'React libraries',
-      'Xamarin.Mac',
-      'Platform SDKs'
-    ]
-  },
-  {
+    description: ['Cross-Platform', 'React libraries', 'Xamarin.Mac', 'Platform SDKs']
+  }, {
     title: 'Flutter',
-    description: [
-      'Cross-Platform',
-      'React libraries',
-      'Xamarin.Mac',
-      'Platform SDKs'
-    ]
-  },
-  {
+    description: ['Cross-Platform', 'React libraries', 'Xamarin.Mac', 'Platform SDKs']
+  }, {
     title: 'React Native',
-    description: [
-      'Cross-Platform',
-      'React libraries',
-      'Xamarin.Mac',
-      'Platform SDKs'
-    ]
-  },
-  {
+    description: ['Cross-Platform', 'React libraries', 'Xamarin.Mac', 'Platform SDKs']
+  }, {
     title: 'Xamarin',
-    description: [
-      '. NET framework',
-      'C# language',
-      'Xamarin.Mac',
-      'Platform SDKs'
-    ]
-  }];
+    description: ['. NET framework', 'C# language', 'Xamarin.Mac', 'Platform SDKs']
+  }]; //------------------ END FILTERS LIST--------------------
 
-  //------------------ END FILTERS LIST--------------------
-  
-  const filterChipsContainer = document.querySelector('.techNewsFilterChipsContainer');
-  const filterBlocksContainer = document.querySelector('.techNewsFilterBlocksContainer');
-  const headerContentContainer = document.querySelector('.headerPagesContentContainer');
-
+  var filterChipsContainer = document.querySelector('.techNewsFilterChipsContainer');
+  var filterBlocksContainer = document.querySelector('.techNewsFilterBlocksContainer');
+  var headerContentContainer = document.querySelector('.headerPagesContentContainer');
   addFilterBlocks();
   addFilterChips();
-  
-  const redDot = openFilter.querySelector('.redCircle');
-  
-  const filterPlatformContainer = Filter.querySelector('.techNewsFilterPlatform');
-  const filterPlatformInputs = filterPlatformContainer.getElementsByTagName('input');
-  const filterInterestContainer = Filter.querySelector('.techNewsFilterInterest');
-  const filterInterestInputs = filterInterestContainer.getElementsByTagName('input');
-  const filterBlockItems = filterBlocksContainer.querySelectorAll('.techNewsFilterBlockItem');
-  const filterChipItems = filterChipsContainer.querySelectorAll('.techNewsFilterChipsItem');
-  const filterApplyButton = Filter.querySelector('.FilterFooter');
-  const filterClearButton = Filter.querySelector('.FilterClear');
-  
+  var redDot = openFilter.querySelector('.redCircle');
+  var filterPlatformContainer = Filter.querySelector('.techNewsFilterPlatform');
+  var filterPlatformInputs = filterPlatformContainer.getElementsByTagName('input');
+  var filterInterestContainer = Filter.querySelector('.techNewsFilterInterest');
+  var filterInterestInputs = filterInterestContainer.getElementsByTagName('input');
+  var filterBlockItems = filterBlocksContainer.querySelectorAll('.techNewsFilterBlockItem');
+  var filterChipItems = filterChipsContainer.querySelectorAll('.techNewsFilterChipsItem');
+  var filterApplyButton = Filter.querySelector('.FilterFooter');
+  var filterClearButton = Filter.querySelector('.FilterClear');
   createFilterCheckboxes();
- 
-  const checkAllPlatformInput = document.getElementById('All Platforms');
-  const checkAllInterestInput = document.getElementById('All_Interest');
-  const techNewsInputs = Filter.querySelectorAll('input');
-  
-  
+  var checkAllPlatformInput = document.getElementById('All Platforms');
+  var checkAllInterestInput = document.getElementById('All_Interest');
+  var techNewsInputs = Filter.querySelectorAll('input');
   showCheckedFilters();
   animateBlocks();
-
   filterClearButton.addEventListener('click', function () {
     clearAllFilters(techNewsInputs);
   });
-
   checkAllPlatformInput.addEventListener('change', function () {
-    checkAllPlatformInput.checked ? checkAllFilters(filterPlatformInputs) : clearAllFilters (filterPlatformInputs);
+    checkAllPlatformInput.checked ? checkAllFilters(filterPlatformInputs) : clearAllFilters(filterPlatformInputs);
   });
-
   checkAllInterestInput.addEventListener('change', function () {
-    checkAllInterestInput.checked ? checkAllFilters(filterInterestInputs) : clearAllFilters (filterInterestInputs);
-  })
-
+    checkAllInterestInput.checked ? checkAllFilters(filterInterestInputs) : clearAllFilters(filterInterestInputs);
+  });
   filterApplyButton.addEventListener('click', function () {
     showCheckedFilters();
   });
-
   closeFilter.addEventListener('click', function () {
     showCheckedFilters();
-  });
+  }); //------------------ CREATE FILTER BLOCKS-----------------
 
-   
-
-  //------------------ CREATE FILTER BLOCKS-----------------
-  function addFilterBlocks () {
+  function addFilterBlocks() {
     filterList.forEach(function (item) {
-      let filterBlockItem = document.createElement('div');
-      let filterBlockItemCover = document.createElement('div');
+      var filterBlockItem = document.createElement('div');
+      var filterBlockItemCover = document.createElement('div');
       filterBlockItemCover.classList.add('blockCover');
       filterBlockItem.classList.add('techNewsFilterBlockItem');
       filterBlockItem.setAttribute('title', item.title);
-      let filterBlockItemTitle = document.createElement('h3');
+      var filterBlockItemTitle = document.createElement('h3');
       filterBlockItemTitle.textContent = item.title;
-      let filterBlockItemDescription = document.createElement('ul');
+      var filterBlockItemDescription = document.createElement('ul');
       filterBlockItemDescription.classList.add('techNewsFilterItemText');
-      function createDescription () {
-        item.description.forEach (function (item) {
-          let listItem = document.createElement('li');
+
+      function createDescription() {
+        item.description.forEach(function (item) {
+          var listItem = document.createElement('li');
           listItem.textContent = item;
           filterBlockItemDescription.appendChild(listItem);
         });
@@ -130,137 +84,176 @@ document.addEventListener("DOMContentLoaded", function () {
       filterBlockItem.appendChild(filterBlockItemTitle);
       filterBlockItem.appendChild(filterBlockItemDescription);
       filterBlocksContainer.appendChild(filterBlockItem);
-    })
+    });
   };
   //------------------END CREATE FILTER BLOCKS------------------
-
+  
   //------------------START ANIMATE FILTER BLOCKS------------------
-   function animateBlocks () {
+
+  function animateBlocks() {
     clickBlocks();
     filterBlocksContainer.addEventListener('mousedown', function (e) {
       handleBlocksMouseMove(e);
-    }, false)
-
+    }, false);
     filterBlocksContainer.addEventListener('touchstart', function (e) {
       handleBlocksTouchMove(e);
-    }, false)
+    }, false);
   }
 
-  function handleBlocksMouseMove (e) {
+  function handleBlocksMouseMove(e) {
     e.preventDefault();
-    let clickDuration = 400;
-    let t1 = Date.now();
-    let mouseStart = e.clientX;
-    let containerPos = headerContentContainer.getBoundingClientRect().x;
-    let blocksPos = filterBlocksContainer.getBoundingClientRect().x;
-    let shift = blocksPos - containerPos;
-    let minPosition = - 232 * (filterBlockItems.length - 1);
-    let maxPosition = 0;
+    var clickDuration = 400;
+    var t1 = Date.now();
+    var mouseStart = e.clientX;
+    var containerPos = headerContentContainer.getBoundingClientRect().left;
+    var blocksPos = filterBlocksContainer.getBoundingClientRect().left;
+    var shift = blocksPos - containerPos;
+    var minPosition = -232 * (filterBlockItems.length - 1);
+    var maxPosition = 0;
+
     document.onmousemove = function (e) {
-      let mouseMove = e.clientX ;
-      let newPos = mouseMove - mouseStart + shift;
-      if (newPos > maxPosition) {newPos = maxPosition};
-      if (newPos < minPosition) {newPos = minPosition};
+      var mouseMove = e.clientX;
+      var newPos = mouseMove - mouseStart + shift;
+
+      if (newPos > maxPosition) {
+        newPos = maxPosition;
+      };
+
+      if (newPos < minPosition) {
+        newPos = minPosition;
+      };
       filterBlocksContainer.style.left = newPos + 'px';
       filterBlocksContainer.classList.add('blockContainerMoved');
     };
+
     document.addEventListener('mouseup', function (e) {
-      let t2 = Date.now();
-      let mouseFinish = e.clientX ;
-      if ((t2-t1) < clickDuration && Math.abs(mouseFinish - mouseStart) < 10) {
-        let blockClick = new Event("blockClick");
-        e.target.dispatchEvent(blockClick);
+      var t2 = Date.now();
+      var mouseFinish = e.clientX;
+
+      if (t2 - t1 < clickDuration && Math.abs(mouseFinish - mouseStart) < 10) {
+        var clickEvent = createNewEvent('blockClick');
+        e.target.dispatchEvent(clickEvent);
       }
+
       document.onmousemove = null;
       filterBlocksContainer.classList.remove('blockContainerMoved');
     });
   };
-  
-  function handleBlocksTouchMove (e) {
+
+  function createNewEvent(eventName) {
+    var event;
+
+    if (typeof Event === 'function') {
+      event = new Event(eventName);
+    } else {
+      event = document.createEvent('Event');
+      event.initEvent(eventName, true, true);
+    }
+
+    return event;
+  }
+
+  function handleBlocksTouchMove(e) {
     e.preventDefault();
-    let touchDuration = 500;
-    let d1 = Date.now();
-    let touchStart = e.changedTouches[0].clientX;
-    let containerPos = headerContentContainer.getBoundingClientRect().x;
-    let blocksPos = filterBlocksContainer.getBoundingClientRect().x;
-    let shift = blocksPos - containerPos;
-    let minPosition = - 232 * (filterBlockItems.length - 1);
-    let maxPosition = 0;
+    var touchDuration = 500;
+    var d1 = Date.now();
+    var touchStart = e.changedTouches[0].clientX;
+    var containerPos = headerContentContainer.getBoundingClientRect().left;
+    var blocksPos = filterBlocksContainer.getBoundingClientRect().left;
+    var shift = blocksPos - containerPos;
+    var minPosition = -232 * (filterBlockItems.length - 1);
+    var maxPosition = 0;
+
     document.ontouchmove = function (e) {
-      let touchMove = e.changedTouches[0].clientX;
-      let newPos = touchMove - touchStart + shift;
-      if (newPos > maxPosition) {newPos = maxPosition};
-      if (newPos < minPosition) {newPos = minPosition};
+      var touchMove = e.changedTouches[0].clientX;
+      var newPos = touchMove - touchStart + shift;
+
+      if (newPos > maxPosition) {
+        newPos = maxPosition;
+      };
+
+      if (newPos < minPosition) {
+        newPos = minPosition;
+      };
       filterBlocksContainer.style.left = newPos + 'px';
       filterBlocksContainer.classList.add('blockContainerMoved');
     };
+
     document.addEventListener('touchend', function (e) {
-      let d2 = Date.now();
-      let touchFinish = e.changedTouches[0].clientX ;
-      if ((d2-d1) < touchDuration && Math.abs(touchFinish - touchStart) < 10) {
-        let blockClick = new Event("blockClick");
+      var d2 = Date.now();
+      var touchFinish = e.changedTouches[0].clientX;
+
+      if (d2 - d1 < touchDuration && Math.abs(touchFinish - touchStart) < 10) {
+        var blockClick = new Event("blockClick");
         e.target.dispatchEvent(blockClick);
       }
+
       document.ontouchmove = null;
       filterBlocksContainer.classList.remove('blockContainerMoved');
     });
   }
 
   function clickBlocks() {
-    for (let i = 0; i < filterBlockItems.length; i++) {
-      let cover = filterBlockItems[i].querySelector('.blockCover');
+    var _loop = function _loop(i) {
+      var cover = filterBlockItems[i].querySelector('.blockCover');
       cover.addEventListener('blockClick', function (e) {
         e.preventDefault();
-        let containerPosition = filterBlocksContainer.getBoundingClientRect().x;
-        let blockPosition = filterBlockItems[i].getBoundingClientRect().x;
-        
-        filterBlockItems.forEach(function (block) {
-          if (block.classList.contains('activeChoiceBlock')) {
-            block.classList.remove('activeChoiceBlock');
+        var containerPosition = filterBlocksContainer.getBoundingClientRect().left;
+        console.log(filterBlockItems[i]);
+        var blockPosition = filterBlockItems[i].getBoundingClientRect().left;
+        for (let j = 0; j < filterBlockItems.length; j++) {
+          if (filterBlockItems[j].classList.contains('activeChoiceBlock')) {
+            filterBlockItems[j].classList.remove('activeChoiceBlock');
           }
-        });
+        }
         filterBlockItems[i].classList.add('activeChoiceBlock');
         filterBlocksContainer.classList.add('blockContainerClicked');
         filterBlocksContainer.style.left = containerPosition - blockPosition + 'px';
         filterBlocksContainer.addEventListener('transitionend', function () {
           filterBlocksContainer.classList.remove('blockContainerClicked');
-        })
-        updateFilters ('block');
-      })
+        });
+        updateFilters('block');
+      });
+    };
+
+    for (var i = 0; i < filterBlockItems.length; i++) {
+      _loop(i);
     }
-  }
-
+  } 
   //------------------END ANIMATE FILTER BLOCKS------------------
-
+  
   //------------------ CREATE FILTER CHIPS--------------------
-  function addFilterChips () {
-    filterList.unshift({title: 'All Platforms', description: []});
+  function addFilterChips() {
+    filterList.unshift({
+      title: 'All Platforms',
+      description: []
+    });
     filterList.forEach(function (item) {
-      let filterChipItem = document.createElement('div');
+      var filterChipItem = document.createElement('div');
       filterChipItem.classList.add('techNewsFilterChipsItem');
       filterChipItem.setAttribute('title', item.title);
       filterChipItem.textContent = item.title;
       filterChipsContainer.appendChild(filterChipItem);
       filterChipItem.addEventListener('click', function () {
         filterChipItem.classList.toggle('activeChoiceChip');
-        updateFilters ('chip');
-      })  
-    })
+        updateFilters('chip');
+      });
+    });
   };
   //------------------END CREATE FILTER CHIPS------------------
-
-  //------------------ CREATE FILTER CHECKBOXES IN FILTER PANEL------------------
   
-  function createFilterCheckboxes () {
+  //------------------ CREATE FILTER CHECKBOXES IN FILTER PANEL------------------
+
+  function createFilterCheckboxes() {
     filterList.forEach(function (item) {
-      let checkboxLabel = document.createElement('label');
+      var checkboxLabel = document.createElement('label');
       checkboxLabel.classList.add('FilterCheckbox');
-      let checkbox = document.createElement('input');
+      var checkbox = document.createElement('input');
       checkbox.type = 'checkbox';
       checkbox.id = item.title;
       checkbox.name = item.title;
       item.title === 'iOS' ? checkbox.checked = true : null;
-      let label = document.createElement('span');
+      var label = document.createElement('span');
       label.textContent = item.title;
       checkboxLabel.appendChild(checkbox);
       checkboxLabel.appendChild(label);
@@ -268,14 +261,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   };
   //------------------END CREATE FILTER CHECKBOXES IN FILTER PANEL-----------------
-
+  
   //------------------CHANGE FILTERS------------------------
-  function updateFilters (type) {
+
+  function updateFilters(type) {
     clearAllFilters(techNewsInputs);
+
     if (type === 'block') {
-      for (let i = 0; i < filterBlockItems.length; i++) {
-        if (filterBlockItems[i].classList.contains('activeChoiceBlock')){
-          for (let j = 0; j < techNewsInputs.length; j++) {
+      for (var i = 0; i < filterBlockItems.length; i++) {
+        if (filterBlockItems[i].classList.contains('activeChoiceBlock')) {
+          for (var j = 0; j < techNewsInputs.length; j++) {
             if (techNewsInputs[j].id === filterBlockItems[i].title) {
               techNewsInputs[j].checked = true;
             }
@@ -283,12 +278,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     }
+
     if (type === 'chip') {
-      for (let i = 0; i < filterChipItems.length; i++) {
-        if (filterChipItems[i].classList.contains('activeChoiceChip')){
-          for (let j = 0; j < techNewsInputs.length; j++) {
-            if (techNewsInputs[j].id === filterChipItems[i].title) {
-              techNewsInputs[j].checked = true;
+      for (var _i = 0; _i < filterChipItems.length; _i++) {
+        if (filterChipItems[_i].classList.contains('activeChoiceChip')) {
+          for (var _j = 0; _j < techNewsInputs.length; _j++) {
+            if (techNewsInputs[_j].id === filterChipItems[_i].title) {
+              techNewsInputs[_j].checked = true;
             }
           };
         }
@@ -296,86 +292,100 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  function getCheckedFilters (inputs) {
-    let checkedFilters=[];
-    for (let i = 0; i < inputs.length; i++) {
+  function getCheckedFilters(inputs) {
+    var checkedFilters = [];
+
+    for (var i = 0; i < inputs.length; i++) {
       if (inputs[i].checked === true) {
-        checkedFilters.push(inputs[i])
+        checkedFilters.push(inputs[i]);
       }
-    } 
-    return checkedFilters; 
+    }
+    return checkedFilters;
   }
 
-  function checkAllFilters (filters) {
-    for (let i = 0; i < filters.length; i++) {
+  function checkAllFilters(filters) {
+    for (var i = 0; i < filters.length; i++) {
       filters[i].checked = true;
     }
   };
 
-  function clearAllFilters (filters) {
-    for (let i = 0; i < filters.length; i++) {
+  function clearAllFilters(filters) {
+    for (var i = 0; i < filters.length; i++) {
       filters[i].checked = false;
     }
   };
 
-  function showCheckedFilters () {
-    for (let i = 0; i < filterBlockItems.length; i++) {
+  function showCheckedFilters() {
+    for (var i = 0; i < filterBlockItems.length; i++) {
       filterBlockItems[i].classList.remove('activeChoiceBlock');
     }
-    let checkedPlatformItems = getCheckedFilters(filterPlatformInputs);
-    let choiceTotal = getCheckedFilters(techNewsInputs);    
+
+    var checkedPlatformItems = getCheckedFilters(filterPlatformInputs);
+    var choiceTotal = getCheckedFilters(techNewsInputs);
+
     if (checkedPlatformItems.length > 1) {
       filterBlocksContainer.classList.add('mainHidden');
       filterChipsContainer.classList.remove('mainHidden');
-      let multipleChoice = [];
-      for (let i = 0; i < checkedPlatformItems.length; i++) {
-        for (let j = 0; j < filterChipItems.length; j++) {
-          if (filterChipItems[j].title === checkedPlatformItems[i].id) {
+      var multipleChoice = [];
+
+      for (var _i2 = 0; _i2 < checkedPlatformItems.length; _i2++) {
+        for (var j = 0; j < filterChipItems.length; j++) {
+          if (filterChipItems[j].title === checkedPlatformItems[_i2].id) {
             multipleChoice.push(filterChipItems[j]);
           }
         }
       };
-      for (let i = 0; i < filterChipItems.length; i++) {
-        filterChipItems[i].classList.remove('activeChoiceChip');
+
+      for (var _i3 = 0; _i3 < filterChipItems.length; _i3++) {
+        filterChipItems[_i3].classList.remove('activeChoiceChip');
       }
-      multipleChoice.forEach(function(item) {item.classList.add('activeChoiceChip')});
-    }
-    else if (checkedPlatformItems.length === 1) {
+
+      multipleChoice.forEach(function (item) {
+        item.classList.add('activeChoiceChip');
+      });
+    } else if (checkedPlatformItems.length === 1) {
       filterChipsContainer.classList.add('mainHidden');
       filterBlocksContainer.classList.remove('mainHidden');
-      let choice;
-      for (let i = 0; i < filterBlockItems.length; i++) {
-        if (filterBlockItems[i].title === checkedPlatformItems[0].id) {
-          choice = filterBlockItems[i];
+      var choice;
+
+      for (var _i4 = 0; _i4 < filterBlockItems.length; _i4++) {
+        if (filterBlockItems[_i4].title === checkedPlatformItems[0].id) {
+          choice = filterBlockItems[_i4];
         }
       }
       choice.classList.add('activeChoiceBlock');
-      let containerPosition = filterBlocksContainer.getBoundingClientRect().x;
-      let blockPosition = choice.getBoundingClientRect().x;
+      var containerPosition = filterBlocksContainer.getBoundingClientRect().left;
+      var blockPosition = choice.getBoundingClientRect().left;
+      filterBlocksContainer.classList.add('blockContainerClicked');
       filterBlocksContainer.style.left = containerPosition - blockPosition + 'px';
-    }
-    else if (checkedPlatformItems.length === 0) {
+      filterBlocksContainer.addEventListener('transitionend', function (){
+        filterBlocksContainer.classList.remove('blockContainerClicked');
+      })
+    } else if (checkedPlatformItems.length === 0) {
       filterChipsContainer.classList.remove('mainHidden');
-      filterBlocksContainer.classList.add('mainHidden'); 
-      for (let i = 0; i < filterChipItems.length; i++) {
-        filterChipItems[i].classList.add('activeChoiceChip');
+      filterBlocksContainer.classList.add('mainHidden');
+
+      for (var _i5 = 0; _i5 < filterChipItems.length; _i5++) {
+        filterChipItems[_i5].classList.add('activeChoiceChip');
       }
-      for (let i = 0; i < filterBlockItems.length; i++) {
-        filterBlockItems[i].classList.remove('activeChoiceChip');
+
+      for (var _i6 = 0; _i6 < filterBlockItems.length; _i6++) {
+        filterBlockItems[_i6].classList.remove('activeChoiceChip');
       }
     }
+
     filterContainer.classList.add('mainHidden');
-    let checkedInterestItems = getCheckedFilters(filterInterestInputs);
-    
+    var checkedInterestItems = getCheckedFilters(filterInterestInputs);
+
     if (checkedPlatformItems.length > 0 || checkedInterestItems.length > 0) {
-      redDot.classList.remove('mainHidden'); 
+      redDot.classList.remove('mainHidden');
     } else {
       redDot.classList.add('mainHidden');
     }
+
+    console.log(choiceTotal);
     return choiceTotal;
   }
-})
+}); 
 //------------------END CHANGE FILTERS-----------------------
-
-
 //------------------ END CREATE TECHNEWS FILTER CHECKBOXES, BLOCKS & CHIPS-------------------------
