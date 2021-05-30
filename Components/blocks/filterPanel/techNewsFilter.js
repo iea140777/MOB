@@ -135,10 +135,10 @@ document.addEventListener("DOMContentLoaded", function () {
   //------------------END CREATE FILTER BLOCKS------------------
 
   //------------------START ANIMATE FILTER BLOCKS------------------
-  function animateBlocks () {
+   function animateBlocks () {
     clickBlocks();
     filterBlocksContainer.addEventListener('mousedown', function (e) {
-          handleBlocksMouseMove(e);
+      handleBlocksMouseMove(e);
     }, false)
 
     filterBlocksContainer.addEventListener('touchstart', function (e) {
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function handleBlocksMouseMove (e) {
     e.preventDefault();
-    let clickDuration = 200;
+    let clickDuration = 400;
     let t1 = Date.now();
     let mouseStart = e.clientX;
     let containerPos = headerContentContainer.getBoundingClientRect().x;
@@ -162,6 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (newPos > maxPosition) {newPos = maxPosition};
       if (newPos < minPosition) {newPos = minPosition};
       filterBlocksContainer.style.left = newPos + 'px';
+      filterBlocksContainer.classList.add('blockContainerMoved');
     };
     document.addEventListener('mouseup', function (e) {
       let t2 = Date.now();
@@ -171,6 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
         e.target.dispatchEvent(blockClick);
       }
       document.onmousemove = null;
+      filterBlocksContainer.classList.remove('blockContainerMoved');
     });
   };
   
@@ -190,15 +192,17 @@ document.addEventListener("DOMContentLoaded", function () {
       if (newPos > maxPosition) {newPos = maxPosition};
       if (newPos < minPosition) {newPos = minPosition};
       filterBlocksContainer.style.left = newPos + 'px';
+      filterBlocksContainer.classList.add('blockContainerMoved');
     };
     document.addEventListener('touchend', function (e) {
       let d2 = Date.now();
-      let touchFinish = e.changedTouches[0].clientX;
+      let touchFinish = e.changedTouches[0].clientX ;
       if ((d2-d1) < touchDuration && Math.abs(touchFinish - touchStart) < 10) {
         let blockClick = new Event("blockClick");
         e.target.dispatchEvent(blockClick);
       }
       document.ontouchmove = null;
+      filterBlocksContainer.classList.remove('blockContainerMoved');
     });
   }
 
