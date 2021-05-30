@@ -20,7 +20,11 @@
 }
 
 .blockContainerClicked {
-  transition: left 0.5s ease-in-out;
+  transition: left 0.5s ease-out;
+}
+
+.blockContainerMoved {
+  transition: left 0.1s ease-out;
 }
 
 .techNewsFilterBlocksContainer h3 {
