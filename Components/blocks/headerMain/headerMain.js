@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     tagList2 = TAGS.slice(k, 2*k);
     tagList3 = TAGS.slice(2*k, TAGS.length-1);
   }
-  
+
   const headerChipsContainer = document.querySelector('.headerChipsContainer');
   
   if (headerChipsContainer) {
@@ -55,8 +55,10 @@ document.addEventListener("DOMContentLoaded", function () {
       moveAnimationDuration = blockWidth / moveSpeed;
       block1.style.animationDuration = moveAnimationDuration + 's';
       let block2 = block1.cloneNode(true);
+      block2.style.animationDuration = moveAnimationDuration + 's';
       chipsLine.appendChild(block2);
       let block3 = block1.cloneNode(true);
+      block3.style.animationDuration = moveAnimationDuration + 's';
       chipsLine.appendChild(block3);
     }
   }
@@ -65,14 +67,14 @@ document.addEventListener("DOMContentLoaded", function () {
     let headerChipsBlock;
     headerChipsBlock = document.createElement('div');
     headerChipsBlock.classList.add('headerChipsBlock');
-      for (let k = 0; k < list.length; k++) {
-        let tagChip = document.createElement('span');
-        tagChip.classList.add('headerChip');
-        tagChip.classList.add('needAnimation');
-        tagChip.textContent = list[k];
-        headerChipsBlock.appendChild(tagChip);
-        line.appendChild(headerChipsBlock);
-      }
+    for (let k = 0; k < list.length; k++) {
+      let tagChip = document.createElement('span');
+      tagChip.classList.add('headerChip');
+      tagChip.classList.add('needAnimation');
+      tagChip.textContent = list[k];
+      headerChipsBlock.appendChild(tagChip);
+      line.appendChild(headerChipsBlock);
+    }
     if (headerChipsBlock.getBoundingClientRect().width < windowWidth) {
       addMoreChips(headerChipsBlock, list);
     }
@@ -94,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
       addMoreChips(block, list);
     }
   };
-
+  
   //------------------END ADD TAG CHIPS (NOT FINISHED)------------------------
 
   //------------------START ANIMATE OPACITY (NOT FINISHED)------------------------
@@ -112,116 +114,109 @@ document.addEventListener("DOMContentLoaded", function () {
       { opacity: '0.4' }
     ];
     
-    const tagButtons = document.querySelectorAll('.headerChip');
+    const tagButtons = document.getElementsByClassName('headerChip');
     const opacityDuration = windowWidth / moveSpeed * 1000;
-    Array.from(tagButtons).forEach(function(button) {
-      let position = button.getBoundingClientRect().left;
-      if (position < windowWidth && position > 0) {
-        button.classList.remove('needAnimation');
-        let opacity;
-        let duration;
-        if (position > windowWidth*0.1 && position <= windowWidth*0.2) {
-          opacity = [
-            { opacity: '0.6' },
-            { opacity: '0.4' }
-          ];
-          duration = {duration: opacityDuration*0.2};
-        } else if (position > windowWidth*0.2 && position <= windowWidth*0.3) {
-        opacity = [
-            { opacity: '0.8' },
-            { opacity: '0.6' },
-            { opacity: '0.4' }
-          ];
-          duration = {duration: opacityDuration*0.3};
-        } else if (position > windowWidth*0.3 && position <= windowWidth*0.4) {
-        opacity = [
-            { opacity: '1' },
-            { opacity: '0.8' },
-            { opacity: '0.6' },
-            { opacity: '0.4' }
-          ];
-          duration = {duration: opacityDuration*0.4};
-        } else if (position > windowWidth*0.4 && position <= windowWidth*0.5) {
-          opacity = [
-            { opacity: '1' },
-            { opacity: '1' },
-            { opacity: '0.8' },
-            { opacity: '0.6' },
-            { opacity: '0.4' }
-          ];
-          duration = {duration: opacityDuration*0.5};
-        } else if (position > windowWidth*0.5 && position <= windowWidth*0.6) {
-          opacity = [
-            { opacity: '1' },
-            { opacity: '1' },
-            { opacity: '1' },
-            { opacity: '0.8' },
-            { opacity: '0.6' },
-            { opacity: '0.4' }
-          ];
-          duration = {duration: opacityDuration*0.6};
-        } else if (position > windowWidth*0.6 && position <= windowWidth*0.7) {
-          opacity = [
-            { opacity: '1' },
-            { opacity: '1' },
-            { opacity: '1' },
-            { opacity: '1' },
-            { opacity: '0.8' },
-            { opacity: '0.6' },
-            { opacity: '0.4' }
-          ];
-          duration =  {duration: opacityDuration*0.7};
-        } else if (position > windowWidth*0.7 && position <= windowWidth*0.8) {
-          opacity = [
-            { opacity: '0.8' },
-            { opacity: '1' },
-            { opacity: '1' },
-            { opacity: '1' },
-            { opacity: '1' },
-            { opacity: '0.8' },
-            { opacity: '0.6' },
-            { opacity: '0.4' }
-          ]; 
-          duration = {
-            duration: opacityDuration*0.8,
-          };
-        } else if (position > windowWidth*0.8 && position <= windowWidth*0.9) {
-          opacity = [
-            { opacity: '0.6' },
-            { opacity: '0.8' },
-            { opacity: '1' },
-            { opacity: '1' },
-            { opacity: '1' },
-            { opacity: '1' },
-            { opacity: '0.8' },
-            { opacity: '0.6' },
-            { opacity: '0.4' }
-          ]; 
-          duration = {
-            duration: opacityDuration*0.9,
-          };
-        } else if (position > windowWidth*0.9 && position <= windowWidth) {
-          opacity = opacityFull;
-          duartion = {
-            duration: opacityDuration,
-          };
-        }
-        let animateOpacity = button.animate(opacity, duration);
-        animateOpacity.onfinish = function() {
-          button.classList.add('needAnimation');
-        }
-      }
-      setInterval(function() {
-        position = button.getBoundingClientRect().left;
-        if ((position > windowWidth*0.9 && position <= windowWidth) && button.classList.contains('needAnimation')){
+    setInterval(function() {
+      for (let i = 0; i < tagButtons.length; i++)  {  
+        let button = tagButtons[i];
+        let position = button.getBoundingClientRect().left;
+        if ((position < windowWidth && position > 0) && button.classList.contains('needAnimation')) {
           button.classList.remove('needAnimation');
-          let animateOpacity = button.animate(opacityFull, opacityDuration);
+          let opacity;
+          let duration;
+          if (position > windowWidth*0.1 && position <= windowWidth*0.2) {
+            opacity = [
+              { opacity: '0.6' },
+              { opacity: '0.4' }
+            ];
+            duration = {duration: opacityDuration*0.2};
+          } else if (position > windowWidth*0.2 && position <= windowWidth*0.3) {
+          opacity = [
+              { opacity: '0.8' },
+              { opacity: '0.6' },
+              { opacity: '0.4' }
+            ];
+            duration = {duration: opacityDuration*0.3};
+          } else if (position > windowWidth*0.3 && position <= windowWidth*0.4) {
+          opacity = [
+              { opacity: '1' },
+              { opacity: '0.8' },
+              { opacity: '0.6' },
+              { opacity: '0.4' }
+            ];
+            duration = {duration: opacityDuration*0.4};
+          } else if (position > windowWidth*0.4 && position <= windowWidth*0.5) {
+            opacity = [
+              { opacity: '1' },
+              { opacity: '1' },
+              { opacity: '0.8' },
+              { opacity: '0.6' },
+              { opacity: '0.4' }
+            ];
+            duration = {duration: opacityDuration*0.5};
+          } else if (position > windowWidth*0.5 && position <= windowWidth*0.6) {
+            opacity = [
+              { opacity: '1' },
+              { opacity: '1' },
+              { opacity: '1' },
+              { opacity: '0.8' },
+              { opacity: '0.6' },
+              { opacity: '0.4' }
+            ];
+            duration = {duration: opacityDuration*0.6};
+          } else if (position > windowWidth*0.6 && position <= windowWidth*0.7) {
+            opacity = [
+              { opacity: '1' },
+              { opacity: '1' },
+              { opacity: '1' },
+              { opacity: '1' },
+              { opacity: '0.8' },
+              { opacity: '0.6' },
+              { opacity: '0.4' }
+            ];
+            duration =  {duration: opacityDuration*0.7};
+          } else if (position > windowWidth*0.7 && position <= windowWidth*0.8) {
+            opacity = [
+              { opacity: '0.8' },
+              { opacity: '1' },
+              { opacity: '1' },
+              { opacity: '1' },
+              { opacity: '1' },
+              { opacity: '0.8' },
+              { opacity: '0.6' },
+              { opacity: '0.4' }
+            ]; 
+            duration = {
+              duration: opacityDuration*0.8,
+            };
+          } else if (position > windowWidth*0.8 && position <= windowWidth*0.9) {
+            opacity = [
+              { opacity: '0.6' },
+              { opacity: '0.8' },
+              { opacity: '1' },
+              { opacity: '1' },
+              { opacity: '1' },
+              { opacity: '1' },
+              { opacity: '0.8' },
+              { opacity: '0.6' },
+              { opacity: '0.4' }
+            ]; 
+            duration = {
+              duration: opacityDuration*0.9,
+            };
+          } else if (position > windowWidth*0.9 && position <= windowWidth) {
+            opacity = opacityFull;
+            duartion = {
+              duration: opacityDuration,
+            };
+          }
+          let animateOpacity = button.animate(opacity, duration);
           animateOpacity.onfinish = function() {
             button.classList.add('needAnimation');
           }
         }
-      }, 500);
-    });
+      };
+    }, 500);
   }  
 });
 //------------------END ANIMATE OPACITY (NOT FINISHED)------------------------
