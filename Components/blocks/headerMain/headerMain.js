@@ -1,21 +1,48 @@
 //------------------START ADD TAG CHIPS ------------------------
 document.addEventListener("DOMContentLoaded", function () { 
-  const tagList1 = ['React Native', 'Flutter', 'Development', 'Flutter', 'Cross-Platform', 'React', 'Development', 'Flutter', 'Development', 'Flutter', 'Cross-Platform', 'React', 'Performance', 'Xamarin', ];
-  const tagList2 = ['JavaScipt', 'Performance', 'Xamarin', 'API Integration', 'React', 'React Native', 'Flutter', 'Development', 'Flutter', 'React', 'React Native', 'Flutter', 'Development', 'Flutter'];
-  const tagList3 = ['Flutter', 'Development', 'Flutter', 'React', 'React Native', 'Flutter', 'Development', 'Flutter', 'JavaScipt', 'Performance', 'Xamarin', 'API Integration', 'React', 'React Native',];
-  const headerChipsContainer = document.querySelector('.headerChipsContainer');
-  let windowWidth  = document.documentElement.clientWidth;
+  const TAGS = ['JavaScipt', 'Performance', 'Xamarin', 'API Integration', 'React', 'React Native', 'Flutter', 'Development', 'Flutter', 'React', 'React Native', 'Flutter', 'Development', 'Flutter'];
+  const moveSpeed = 7; // px/1s
+  let moveAnimationDuration;
 
+  let windowWidth  = document.documentElement.clientWidth;
+  let rowsAmount;
+  
+  if (windowWidth > 631) {
+    rowsAmount =  2;
+  } else {
+    rowsAmount =  3;
+  }
+
+  let k = Math.floor(TAGS.length / rowsAmount);
+  
+  let tagList1;
+  let tagList2;
+  let tagList3;
+
+  if(rowsAmount === 2) {
+    tagList1 = TAGS.slice(0, k);
+    tagList2 = TAGS.slice(k, TAGS.length-1);
+  } else {
+    tagList1 = TAGS.slice(0, k);
+    tagList2 = TAGS.slice(k, 2*k);
+    tagList3 = TAGS.slice(2*k, TAGS.length-1);
+  }
+  
+  console.log(tagList1);
+  console.log(tagList2);
+  console.log(tagList3);
+
+  const headerChipsContainer = document.querySelector('.headerChipsContainer');
+  
   if (headerChipsContainer) {
     createTagBlocks();
     if (windowWidth > 631)  {
-//       animateOpacity ();
+      animateOpacity ();
     };
   }
 
   function createTagBlocks () {
     let listApplied;
-    let rowsAmount;
     if (windowWidth > 631)  {
       rowsAmount = 2;
       listApplied = [tagList1, tagList2];
@@ -26,25 +53,52 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let i = 0; i < rowsAmount; i++) {
       let chipsLine = document.createElement('div');
       chipsLine.classList.add('headerChipsLine');
-      for (let j = 0; j < 3; j++) {
-        let headerChipsBlock = document.createElement('div');
-        headerChipsBlock.classList.add('headerChipsBlock');
-        createChips(headerChipsBlock, listApplied[i]);
-        chipsLine.appendChild(headerChipsBlock);
-      }
       headerChipsContainer.appendChild(chipsLine);
+      let block1 = createChips (listApplied[i], chipsLine);
+      let blockWidth = block1.getBoundingClientRect().width;
+      moveAnimationDuration = blockWidth / moveSpeed;
+      block1.style.animationDuration = moveAnimationDuration + 's';
+      let block2 = block1.cloneNode(true);
+      chipsLine.appendChild(block2);
+      let block3 = block1.cloneNode(true);
+      chipsLine.appendChild(block3);
     }
   }
 
-  function createChips (chipsBlock, list) {
-    for (let k = 0; k < list.length; k++) {
+  function createChips (list, line) {
+    let headerChipsBlock;
+    headerChipsBlock = document.createElement('div');
+    headerChipsBlock.classList.add('headerChipsBlock');
+      for (let k = 0; k < list.length; k++) {
+        let tagChip = document.createElement('span');
+        tagChip.classList.add('headerChip');
+        tagChip.classList.add('needAnimation');
+        tagChip.textContent = list[k];
+        headerChipsBlock.appendChild(tagChip);
+        line.appendChild(headerChipsBlock);
+      }
+    if (headerChipsBlock.getBoundingClientRect().width < windowWidth) {
+      addMoreChips(headerChipsBlock, list);
+    }
+    return headerChipsBlock;
+  }
+
+  function addMoreChips (block, list) {
+    for (let k = 0; k < list.length; k++)  {
       let tagChip = document.createElement('span');
       tagChip.classList.add('headerChip');
       tagChip.classList.add('needAnimation');
       tagChip.textContent = list[k];
-      chipsBlock.appendChild(tagChip);
+      block.appendChild(tagChip);
+      if (block.getBoundingClientRect().width > windowWidth) {
+        return block;
+      }
     }
-  }
+    if (block.getBoundingClientRect().width < windowWidth) {
+      addMoreChips(block, list);
+    }
+  };
+
   //------------------END ADD TAG CHIPS (NOT FINISHED)------------------------
 
   //------------------START ANIMATE OPACITY (NOT FINISHED)------------------------
@@ -61,61 +115,57 @@ document.addEventListener("DOMContentLoaded", function () {
       { opacity: '0.6' },
       { opacity: '0.4' }
     ];
-    const tagButtons = document.querySelectorAll('.needAnimation');
-    // console.log(tagButtons);
+    
+    const tagButtons = document.querySelectorAll('.headerChip');
+    const opacityDuration = windowWidth / moveSpeed * 1000;
     Array.from(tagButtons).forEach(function(button) {
-      const duration = 200000;
-      let position = button.getBoundingClientRect().x;
-      let windowWidth  = document.documentElement.clientWidth;
-      if (position < windowWidth && position > 0 ) {
+      let position = button.getBoundingClientRect().left;
+      if (position < windowWidth && position > 0) {
         button.classList.remove('needAnimation');
+        let opacity;
+        let duration;
         if (position > windowWidth*0.1 && position <= windowWidth*0.2) {
-          button.animate([
+          opacity = [
             { opacity: '0.6' },
             { opacity: '0.4' }
-          ], {
-            duration: duration*0.2,
-          });
+          ];
+          duration = {duration: opacityDuration*0.2};
         } else if (position > windowWidth*0.2 && position <= windowWidth*0.3) {
-          button.animate([
+        opacity = [
             { opacity: '0.8' },
             { opacity: '0.6' },
             { opacity: '0.4' }
-          ], {
-            duration: duration*0.3,
-          });
+          ];
+          duration = {duration: opacityDuration*0.3};
         } else if (position > windowWidth*0.3 && position <= windowWidth*0.4) {
-          button.animate([
+        opacity = [
             { opacity: '1' },
             { opacity: '0.8' },
             { opacity: '0.6' },
             { opacity: '0.4' }
-          ], {
-            duration: duration*0.4,
-          });
+          ];
+          duration = {duration: opacityDuration*0.4};
         } else if (position > windowWidth*0.4 && position <= windowWidth*0.5) {
-          button.animate([
+          opacity = [
             { opacity: '1' },
             { opacity: '1' },
             { opacity: '0.8' },
             { opacity: '0.6' },
             { opacity: '0.4' }
-          ], {
-            duration: duration*0.5,
-          });
+          ];
+          duration = {duration: opacityDuration*0.5};
         } else if (position > windowWidth*0.5 && position <= windowWidth*0.6) {
-          button.animate([
+          opacity = [
             { opacity: '1' },
             { opacity: '1' },
             { opacity: '1' },
             { opacity: '0.8' },
             { opacity: '0.6' },
             { opacity: '0.4' }
-          ], {
-            duration: duration*0.6,
-          });
+          ];
+          duration = {duration: opacityDuration*0.6};
         } else if (position > windowWidth*0.6 && position <= windowWidth*0.7) {
-          button.animate([
+          opacity = [
             { opacity: '1' },
             { opacity: '1' },
             { opacity: '1' },
@@ -123,11 +173,10 @@ document.addEventListener("DOMContentLoaded", function () {
             { opacity: '0.8' },
             { opacity: '0.6' },
             { opacity: '0.4' }
-          ], {
-            duration: duration*0.7,
-          });
+          ];
+          duration =  {duration: opacityDuration*0.7};
         } else if (position > windowWidth*0.7 && position <= windowWidth*0.8) {
-          button.animate([
+          opacity = [
             { opacity: '0.8' },
             { opacity: '1' },
             { opacity: '1' },
@@ -136,11 +185,12 @@ document.addEventListener("DOMContentLoaded", function () {
             { opacity: '0.8' },
             { opacity: '0.6' },
             { opacity: '0.4' }
-          ], {
-            duration: duration*0.8,
-          });
+          ]; 
+          duration = {
+            duration: opacityDuration*0.8,
+          };
         } else if (position > windowWidth*0.8 && position <= windowWidth*0.9) {
-          button.animate([
+          opacity = [
             { opacity: '0.6' },
             { opacity: '0.8' },
             { opacity: '1' },
@@ -150,41 +200,35 @@ document.addEventListener("DOMContentLoaded", function () {
             { opacity: '0.8' },
             { opacity: '0.6' },
             { opacity: '0.4' }
-          ], {
-            duration: duration*0.9,
-          });
+          ]; 
+          duration = {
+            duration: opacityDuration*0.9,
+          };
         } else if (position > windowWidth*0.9 && position <= windowWidth) {
-          button.animate(opacityFull, {
-            duration: duration,
-          });
+          opacity = opacityFull;
+          duartion = {
+            duration: opacityDuration,
+          };
         }
-      };
-
-      // button.classList.add('needAnimation');
-      // button.onanimationend = function (e) {
-      //   console.log('transition finished');
-      //   console.log(e);
-      //   // button.classList.add('needAnimation');
-      // }
-      // addEventListener('animationstart', function (e) {
-      //   console.log('transition finished');
-      //   console.log(e);
-      //   button.classList.add('needAnimation');
-      // });
+        let animateOpacity = button.animate(opacity, duration);
+        animateOpacity.onfinish = function() {
+          button.classList.add('needAnimation');
+        }
+      }
       setInterval(function() {
-        if (button.classList.contains('needAnimation')) {
-          let position = button.getBoundingClientRect().x;
-          let windowWidth  = document.documentElement.clientWidth;
-          if (position < windowWidth && position > 0) {
-            button.classList.remove('needAnimation');
-            button.animate(opacityFull, {
-              duration: duration,
-            });
+        position = button.getBoundingClientRect().left;
+        if ((position > windowWidth*0.9 && position <= windowWidth) && button.classList.contains('needAnimation')){
+          console.log('need animation:', button);
+          button.classList.remove('needAnimation');
+          let animateOpacity = button.animate(opacityFull, opacityDuration);
+          animateOpacity.onfinish = function() {
+            button.classList.add('needAnimation');
+            console.log('add back Need Animation:', button);
           }
         }
-      }, 1000);
-      
+      }, 500);
     });
   }  
 });
 //------------------END ANIMATE OPACITY (NOT FINISHED)------------------------
+
