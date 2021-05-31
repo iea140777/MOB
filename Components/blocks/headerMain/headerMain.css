@@ -170,8 +170,7 @@
 
 .headerChipsContainer {
   position: relative;
-  margin-bottom: 80px;
-  width: 100vw;
+  margin-bottom: 68px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -188,12 +187,11 @@
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between; 
+    flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start; 
   overflow: hidden;
-  min-width: 100%;
   width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
@@ -203,20 +201,24 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   margin-bottom: 12px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between; 
   -ms-flex-wrap: nowrap; 
       flex-wrap: nowrap;
   overflow: hidden;
-  min-width: 100vw;
   width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
-  -webkit-animation: header-move linear 200s infinite;
-  animation: header-move linear 200s infinite;
+  -webkit-animation-name: header-move;
+          animation-name: header-move;
+  -webkit-animation-timing-function:  linear;
+          animation-timing-function:  linear;
+  -webkit-animation-iteration-count:  infinite;
+          animation-iteration-count:  infinite;
 }
+
 
 .headerChip {
   display: inline-block;
@@ -257,6 +259,21 @@
     -webkit-transform: translateX(-100%);
             transform: translateX(-100%);
  }
+}
+
+@-webkit-keyframes opacity1 { 
+  0% { opacity: '0.6' };
+  100% { opacity: '0.4' }
+}
+
+@keyframes opacity1 { 
+  0% { opacity: '0.6' };
+  100% { opacity: '0.4' }
+}
+
+.opacity1 {
+  -webkit-animation: opacity1 linear 200s infinite;
+          animation: opacity1 linear 200s infinite;
 }
 
 @media screen and (min-width: 1600px) {
