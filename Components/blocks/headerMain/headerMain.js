@@ -28,10 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
     tagList3 = TAGS.slice(2*k, TAGS.length-1);
   }
   
-  console.log(tagList1);
-  console.log(tagList2);
-  console.log(tagList3);
-
   const headerChipsContainer = document.querySelector('.headerChipsContainer');
   
   if (headerChipsContainer) {
@@ -218,12 +214,10 @@ document.addEventListener("DOMContentLoaded", function () {
       setInterval(function() {
         position = button.getBoundingClientRect().left;
         if ((position > windowWidth*0.9 && position <= windowWidth) && button.classList.contains('needAnimation')){
-          console.log('need animation:', button);
           button.classList.remove('needAnimation');
           let animateOpacity = button.animate(opacityFull, opacityDuration);
           animateOpacity.onfinish = function() {
             button.classList.add('needAnimation');
-            console.log('add back Need Animation:', button);
           }
         }
       }, 500);
