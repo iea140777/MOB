@@ -5,12 +5,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const Filter = document.querySelector('.Filter');
   const openFilterButton = document.querySelector('.headerPagesFilterButton');
   const closeFilterButton = Filter.querySelector('.FilterClose');
+  const filterApplyButton = Filter.querySelector('.FilterApply');
  
   openFilterButton.addEventListener('click', function () {
     openFilter();
   });
  
   closeFilterButton.addEventListener('click', function () {
+    closeFilter();
+  });
+
+  filterApplyButton.addEventListener('click', function () {
     closeFilter();
   });
 
