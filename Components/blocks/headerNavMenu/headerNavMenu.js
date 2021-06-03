@@ -1,19 +1,40 @@
-//------------------ OPEN & CLOSE DROPDOWN MENU-------------------------
-const openMenu = document.querySelector('.headerMenuButton');
-const menuContainer = document.querySelector('.mainDropdownMenuContainer');
-const closeMenu = menuContainer.querySelector('.mainDropdownMenuClose');
+document.addEventListener("DOMContentLoaded", function () {
 
-openMenu.addEventListener('click', function () {
-  menuContainer.classList.remove('mainHidden');
-  setTimeout(function() {
-    menuContainer.classList.add('mainDropdownMenuContainerOpen');
-  }, 50);
-});
+  //------------------ OPEN & CLOSE DROPDOWN MENU-------------------------
+  const menuContainer = document.querySelector('.mainDropdownMenuContainer');
+  const openMenuButton = document.querySelector('.headerMenuButton');
+  const closeMenuButton = menuContainer.querySelector('.mainDropdownMenuClose');
 
-closeMenu.addEventListener('click', function () {
-  menuContainer.classList.remove('mainDropdownMenuContainerOpen');
-  setTimeout(function() {
-    menuContainer.classList.add('mainHidden');
+  openMenuButton.addEventListener('click', function () {
+    openMenu ();
+  });
+
+  closeMenuButton.addEventListener('click', function () {
+    closeMenu (); 
+  });
+
+  document.addEventListener('click', function (e){
+    const target = e.target;
+    const menu = target == menuContainer || menuContainer.contains(target);
+    const menyActive = menuContainer.classList.contains('mainDropdownMenuContainerOpen');
+    if (!menu && menyActive) {
+      closeMenu();
+    }
+  })
+
+  function openMenu () {
+    menuContainer.classList.remove('mainHidden');
+    setTimeout(function() {
+      menuContainer.classList.add('mainDropdownMenuContainerOpen');
+    }, 50);
+  }
+
+  function closeMenu () {
+    menuContainer.classList.remove('mainDropdownMenuContainerOpen');
+    setTimeout(function() {
+      menuContainer.classList.add('mainHidden');
     }, 250);
-});
+  }
 //------------------END OPEN & CLOSE DROPDOWN MENU------------------------
+
+});
