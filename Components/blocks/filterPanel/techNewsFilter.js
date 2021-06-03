@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var filterInterestInputs = filterInterestContainer.getElementsByTagName('input');
   var filterBlockItems = filterBlocksContainer.querySelectorAll('.techNewsFilterBlockItem');
   var filterChipItems = filterChipsContainer.querySelectorAll('.techNewsFilterChipsItem');
-  var filterApplyButton = Filter.querySelector('.FilterFooter');
+  var filterApplyButton = Filter.querySelector('.FilterApply');
   var filterClearButton = Filter.querySelector('.FilterClear');
   createFilterCheckboxes();
   var checkAllPlatformInput = document.getElementById('All Platforms');
@@ -59,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   filterApplyButton.addEventListener('click', function () {
     showCheckedFilters();
-    filterContainer.classList.add('mainHidden');
   });
   //------------------ CREATE FILTER BLOCKS-----------------
 
