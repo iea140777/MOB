@@ -3,8 +3,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   var filterContainer = document.querySelector('.FilterContainer');
   var Filter = document.querySelector('.Filter');
-  var openFilter = document.querySelector('.headerPagesFilterButton');
-  var closeFilter = Filter.querySelector('.FilterClose'); //------------------ CREATE TECHNEWS FILTER CHECKBOXES, BLOCKS & CHIPS-------------------------
+  var openFilter = document.querySelector('.headerPagesFilterButton'); 
+  
+  //------------------ CREATE TECHNEWS FILTER CHECKBOXES, BLOCKS & CHIPS-------------------------
+  
   //------------------ START FILTERS LIST--------------------
 
   var filterList = [{
@@ -42,8 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
   var checkAllPlatformInput = document.getElementById('All Platforms');
   var checkAllInterestInput = document.getElementById('All_Interest');
   var techNewsInputs = Filter.querySelectorAll('input');
+  
   showCheckedFilters();
   animateBlocks();
+  
   filterClearButton.addEventListener('click', function () {
     clearAllFilters(techNewsInputs);
   });
@@ -55,10 +59,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   filterApplyButton.addEventListener('click', function () {
     showCheckedFilters();
+    filterContainer.classList.add('mainHidden');
   });
-  closeFilter.addEventListener('click', function () {
-    showCheckedFilters();
-  }); //------------------ CREATE FILTER BLOCKS-----------------
+  //------------------ CREATE FILTER BLOCKS-----------------
 
   function addFilterBlocks() {
     filterList.forEach(function (item) {
@@ -142,14 +145,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function createNewEvent(eventName) {
     var event;
-
     if (typeof Event === 'function') {
       event = new Event(eventName);
     } else {
       event = document.createEvent('Event');
       event.initEvent(eventName, true, true);
     }
-
     return event;
   }
 
@@ -374,7 +375,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    filterContainer.classList.add('mainHidden');
     var checkedInterestItems = getCheckedFilters(filterInterestInputs);
 
     if (checkedPlatformItems.length > 0 || checkedInterestItems.length > 0) {
@@ -383,7 +383,6 @@ document.addEventListener("DOMContentLoaded", function () {
       redDot.classList.add('mainHidden');
     }
 
-    console.log(choiceTotal);
     return choiceTotal;
   }
 }); 
