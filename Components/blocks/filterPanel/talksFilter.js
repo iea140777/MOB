@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const FilterContainer = document.querySelector('.FilterContainer');
   const Filter = document.querySelector('.Filter');
   const openFilter = document.querySelector('.headerPagesFilterButton');
-  const closeFilter = Filter.querySelector('.FilterClose');
 
 //------------------START FILTER MENU------------------------
   const redDot = openFilter.querySelector('.redCircle');
@@ -16,14 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const talksInputsDate = filterCheckboxContainerDate.querySelectorAll('input');
   const talksInputsCategory = filterCheckboxContaineCategory.querySelectorAll('input');
 
-  openFilter.addEventListener('click', function() {
-    FilterContainer.classList.remove('mainHidden');
-  });
-
-  closeFilter.addEventListener('click', function() {
-    FilterContainer.classList.add('mainHidden');
-    
-  });
 
   filterClearButton.addEventListener('click', function() {
     clearAllFilters();
@@ -31,10 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   filterApplyButton.addEventListener('click', function() {
     FilterContainer.classList.add('mainHidden');
-    getChoice();
-  });
-
-  closeFilter.addEventListener('click', function () {
     getChoice();
   });
 
@@ -48,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       redDot.classList.remove('mainHidden');
     }
-    console.log(choice);
     return choice;
   }
 
