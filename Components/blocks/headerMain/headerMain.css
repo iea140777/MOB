@@ -2,12 +2,12 @@
   width: 100%;
   overflow: hidden;
   background: 
-    url(./img/Illustrations1.png), 
-    url(./img/Illustrations2.png), border-box
+    url(./img/headerBack1.svg), 
+    url(./img/headerBack2.svg), border-box
     -o-linear-gradient(315deg, rgba(171, 220, 255, 0.32) 0%, rgba(3, 150, 255, 0.32) 100%);
   background: 
-    url(./img/Illustrations1.png), 
-    url(./img/Illustrations2.png), border-box
+    url(./img/headerBack1.svg), 
+    url(./img/headerBack2.svg), border-box
     linear-gradient(135deg, rgba(171, 220, 255, 0.32) 0%, rgba(3, 150, 255, 0.32) 100%);
   background-repeat: no-repeat, no-repeat, no-repeat;
   background-position: -0.5% 30px, 98% 100px, 0 0;
@@ -18,14 +18,32 @@
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+          flex-direction: column; 
+          -webkit-box-pack: start; 
+              -ms-flex-pack: start; 
+                  justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.headerInnerContainer {
+  width: 100%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; 
+          -webkit-box-pack: center; 
+              -ms-flex-pack: center; 
+                  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
   
 .headerContentContainer {
@@ -37,15 +55,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 61px 0 48px 0;
-}
-
-.headerTextButtons, .headerTextContainer p {
-  margin-top: 40px;
-}
-
-.headerSearchForm {
-  margin-top: 100px;
 }
 
 .headerTextContainer {
@@ -64,12 +73,14 @@
   font-size: 24px;
   opacity: 0.48;
   line-height: 32px;
+  margin-top: 4%;
 }
 
 .headerTextButtons{
   display:-webkit-box;
   display:-ms-flexbox;
   display:flex;
+  margin-top: 4%;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -109,6 +120,7 @@
 
 .headerSearchForm {
   position: relative;
+  margin-top: 10%;
 }
 
 .headerSearchInput {
@@ -169,7 +181,7 @@
 } 
 
 .headerChipsContainer {
-  margin-bottom: 68px;
+  /* margin-bottom: 68px; */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -277,16 +289,25 @@
 @media screen and (min-width: 1600px) {
   .header {
     background-size: 400px, 550px, 100%;
-    background-position: 5% 30px, 95% 100px, 0 0;
+    background-position: 15% 20%, 85% 30%, 0 0;
   }
 }
-
 
 @media screen and (max-width: 1200px) {
   .header {
     background-position: -6.5% 70px, 105% 120px, 0 0;
   } 
 }
+
+@media screen and  (min-width: 1000px) {
+  .header {
+   min-height: 850px;
+   height: 100vh;   
+  }
+  .headerContentContainer {
+    margin-bottom: 4%;
+  }
+} 
 
 @media screen and  (max-width: 1000px) {
   .header {
@@ -296,28 +317,27 @@
 
   .headerContentContainer {
     margin-top: 60vw;
+    padding: 0 0 48px 0;
   }
-}
 
-@media screen and (max-width: 860px) {
-  .header {
-    background-size: 40%, 60%, 100%;
+  .headerChipsContainer {
+    margin-bottom: 68px;
+  }
+  .headerTextButtons, .headerTextContainer p {
+    margin-top: 40px;
+  }
+  .headerSearchForm {
+    margin-top: 100px;
   }
 }
 
 @media screen and (max-width: 700px) {
   .header {
-    background-size: 45%, 68%, 100%;
-    background-position: 5% 15px, 100% 45px, 0 0;
+    background-size: 40%, 58%, 100%;
   }
 } 
 
 @media screen and (max-width: 630px) {
-  .header {
-    background-size: 50%, 70%, 100%;
-    background-position: 5% 15px, 95% 45px, 0 0;
-  }
-
   .headerContentContainer {
     margin-top: 65vw;
     padding-left: 12px;
