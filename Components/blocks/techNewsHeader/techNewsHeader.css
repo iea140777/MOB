@@ -28,7 +28,6 @@
   background:  rgba(0, 0, 0, 0.08);
   overflow: hidden;
   cursor: pointer;
-  border: none;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -79,6 +78,10 @@
   height: 100%;
   background-color: transparent;
   z-index: 10;
+}
+
+.blockCover:focus {
+  outline: none;
 }
 
 .techNewsFilterItemText {
