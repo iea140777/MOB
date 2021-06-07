@@ -28,6 +28,10 @@
   background:  rgba(0, 0, 0, 0.08);
   overflow: hidden;
   cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .slick-current  {
@@ -44,7 +48,10 @@
 }
 
 .techNewsFilterBlockItem > * {
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .techNewsFilterBlockItem h3{
@@ -112,7 +119,10 @@
   width: auto;
   padding: 8px 16px;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   background: rgba(0, 0, 0, 0.08);
   border-radius: 8px;
   font-size: 16px;
