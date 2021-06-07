@@ -96,6 +96,11 @@ p > a:hover {
   text-decoration: underline;
 }
 
+*:active, *:hover, *:focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
 .mainHidden {
   display: none !important;
 }
