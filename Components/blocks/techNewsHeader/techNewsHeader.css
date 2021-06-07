@@ -82,7 +82,8 @@
 }
 
 .blockCover:focus {
-  outline: none;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .techNewsFilterItemText {
