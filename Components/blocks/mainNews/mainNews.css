@@ -75,12 +75,21 @@
 }
 
 .mainNewsItemTitle {
+  display: inline-block;
   cursor: pointer;
 }
+
+.mainNewsItemTitle h3:hover, .mainNewsItemTitle h3:active {
+  text-decoration: underline;
+} 
 
 .mainNewsItemTitle svg {
   margin-left: 2px;
   vertical-align: middle;
+}
+
+.mainNewsItemTitle:hover svg {
+  text-decoration: underline;
 }
 
 .mainNewsItemData {
@@ -129,5 +138,14 @@
   padding: 0 16px;
   width: auto;
   white-space: nowrap;
+  border: 1px solid transparent;
+  -webkit-transition: border-color 300ms;
+  -o-transition: border-color 300ms;
+  transition: border-color 300ms;
+  cursor: pointer;
+}
+
+.mainNewsItemTag:hover, .mainNewsItemTag:active {
+  border-color: #000000;
 }
 
