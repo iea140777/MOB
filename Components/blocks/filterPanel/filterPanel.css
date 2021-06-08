@@ -160,6 +160,13 @@ margin-bottom: 12px;
   border-radius: 4px;
   margin-right: 12px;
   cursor: pointer;
+  -webkit-transition: border-color 300ms;
+  -o-transition: border-color 300ms;
+  transition: border-color 300ms;
+}
+
+.FilterCheckbox > span:hover::before {
+  border-color: #0B63CB;
 }
 
 .FilterCheckbox>input:checked+span::before {
@@ -170,6 +177,13 @@ margin-bottom: 12px;
   background-repeat: no-repeat;
   background-position: center;
   background-color: #0B63CB;
+  -webkit-transition: background-color 300ms;
+  -o-transition: background-color 300ms;
+  transition: background-color 300ms;
+}
+
+.FilterCheckbox>input:hover:checked+span::before {
+  background-color: #000000;
 }
 
 .FilterFooter {
