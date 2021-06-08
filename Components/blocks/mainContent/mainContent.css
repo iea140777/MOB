@@ -84,11 +84,27 @@
   -ms-flex-negative: 0;
       flex-shrink: 0;
   margin-left: 20px;
+  color:#000000;
+  -webkit-transition: color 300ms;-o-transition: color 300ms;transition: color 300ms;
+}
+
+.mainSectionTitleExpand:hover,  .mainSectionTitleExpand:active {
+  color: #0B63CB;
 }
 
 .mainSectionTitleExpand a {
   text-decoration: none;
-  color:#000000;
+  color:inherit;
+}
+
+.mainSectionTitleExpand svg {
+  -webkit-transition: fill 300ms;
+  -o-transition: fill 300ms;
+  transition: fill 300ms;
+}
+
+.mainSectionTitleExpand:hover svg,  .mainSectionTitleExpand:active svg{
+  fill: #0B63CB;
 }
 
 .mainSectionTitleText{
@@ -152,3 +168,4 @@
     display: none;
   }
 }
+
