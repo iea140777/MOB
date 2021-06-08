@@ -143,6 +143,16 @@
   color:black;
   text-decoration: underline;
   font-weight: 700;
+  -webkit-transition: color 300ms, -webkit-text-decoration 300ms;
+  transition: color 300ms, -webkit-text-decoration 300ms;
+  -o-transition: color 300ms, text-decoration 300ms;
+  transition: color 300ms, text-decoration 300ms;
+  transition: color 300ms, text-decoration 300ms, -webkit-text-decoration 300ms;
+}
+
+.mainGetNewsCommentsItem:nth-child(2):hover, .mainGetNewsCommentsItem:nth-child(2):active {
+  text-decoration: none;
+  color: #0B63CB;
 }
 
 
