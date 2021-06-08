@@ -10,6 +10,14 @@
 .backLink a {
   display: inline-block;
   padding: 12px;
+  -webkit-transition: color 300ms;
+  -o-transition: color 300ms;
+  transition: color 300ms;
+  color: inherit;
+}
+
+.backLink a:hover, .backLink a:active {
+  color: #0B63CB;
 }
 
 .backLink svg {
@@ -19,6 +27,13 @@
           transform: rotate(180deg);
   width: 14.6px;
   height: 12px;
+  -webkit-transition: fill 300ms;
+  -o-transition: fill 300ms;
+  transition: fill 300ms;
+}
+
+.backLink a:hover svg, .backLink a:active svg {
+  fill:#0B63CB;
 }
 
 @media screen and (max-width: 860px) {
