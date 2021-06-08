@@ -20,12 +20,24 @@
   margin-right: 24px;
   white-space: nowrap;
   cursor: pointer;
+  -webkit-transition: color 300ms;
+  -o-transition: color 300ms;
+  transition: color 300ms;
 }
 
 .mainNewsTitleChip:nth-child(1) {
   border: 1px solid #000000;
   padding: 0 16px;
   border-radius: 8px;
+  cursor: default;
+}
+
+.mainNewsTitleChip:hover, .mainNewsTitleChip:active {
+  color: #0B63CB;
+}
+
+.mainNewsTitleChip:nth-child(1):hover, .mainNewsTitleChip:nth-child(1):hover {
+  color: #000000;
 }
 
 .mainNewsItem {
