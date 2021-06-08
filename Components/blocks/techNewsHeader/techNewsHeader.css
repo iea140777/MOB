@@ -12,8 +12,11 @@
 
 .techNewsFilterBlockItem {
   position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin-right: 12px;
   padding: 16px;
+  border: 1px solid transparent;
   border-radius: 8px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -28,10 +31,17 @@
   background:  rgba(0, 0, 0, 0.08);
   overflow: hidden;
   cursor: pointer;
+  -webkit-transition: border-color 300ms;
+  -o-transition: border-color 300ms;
+  transition: border-color 300ms;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+.techNewsFilterBlockItem:hover, .techNewsFilterBlockItem:active {
+  border-color: #000000;
 }
 
 .slick-current  {
@@ -78,18 +88,18 @@
   height: 100%;
   background-color: transparent;
   z-index: 10;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.blockCover:focus {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none; 
     -moz-user-select: none; 
     -ms-user-select: none; 
 }
 
-.blockCover:focus {
- outline: none !important;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-user-select: none; 
-    -moz-user-select: none; 
-    -ms-user-select: none; 
+.blockCover:-moz-focus-inner {
+  border: 0 !important;
 }
 
 .techNewsFilterItemText {
@@ -136,10 +146,14 @@
       -ms-user-select: none;
           user-select: none;
   background: rgba(0, 0, 0, 0.08);
+  border: 1px solid transparent;
   border-radius: 8px;
   font-size: 16px;
   line-height: 24px;
   display: inline-block;
+  -webkit-transition: border-color 300ms;
+  -o-transition: border-color 300ms;
+  transition: border-color 300ms;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -148,13 +162,15 @@
           align-items: center;
 }
 
+.techNewsFilterChipsItem:hover, .techNewsFilterChipsItem:active {
+  border-color: #000000;
+}
+
 .activeChoiceChip {
   background-color: black;
   color: white;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16);
           box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16);
 }
-
-
 
 
