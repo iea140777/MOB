@@ -29,10 +29,6 @@
   width: auto;
 }
 
-.navigationListContainer a {
-  margin-left: 2.4vw;
-}
-
 .menuButtonContainer {
   display: none;
   width: 48px;
@@ -49,7 +45,7 @@
   margin: 0 auto;
 }
 
-.navigationListContainer > a {
+.navigationListContainer a {
   display: block;
   text-decoration: none;
   white-space: nowrap;
@@ -57,6 +53,14 @@
   font-size: 16px;
   font-family: "SF Pro Text medium";
   font-weight: 500;
+  margin-left: 2.4vw;
+  -webkit-transition: color 0.3s;
+  -o-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.navigationListContainer a:hover, .navigationListContainer a:active {
+  color: #0B63CB;
 }
 
 @media screen and (max-width: 860px) {
@@ -74,5 +78,3 @@
     display: flex;
   }
 }
-
-
