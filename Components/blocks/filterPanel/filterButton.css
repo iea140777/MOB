@@ -1,4 +1,3 @@
-/* headerPages filter button start */
 .headerPagesFilterButton {
   width: 100%;
   height: 40px;
@@ -21,7 +20,20 @@
       -ms-flex-align: center;
           align-items: center;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: -webkit-box-shadow 300ms;
+  transition: -webkit-box-shadow 300ms;
+  -o-transition: box-shadow 300ms;
+  transition: box-shadow 300ms;
+  transition: box-shadow 300ms, -webkit-box-shadow 300ms;
+}
+
+.headerPagesFilterButton:hover, .headerPagesFilterButton:active {
+  -webkit-box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.16);
+          box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.16);
 }
 
 .redCircle {
@@ -34,5 +46,3 @@
   margin-bottom: 11px;
   margin-left: 2px;
 }
-
-/* headerPages filter button end */
