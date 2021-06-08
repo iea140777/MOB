@@ -103,19 +103,49 @@
       -ms-flex-pack: center;
           justify-content: center;
   cursor: pointer;
+  color: #000000;
+}
+
+.headerTextButton:hover, .headerTextButton:active {
+  color: #0B63CB;
 }
 
 .headerTextButton:nth-child(1) {
   border: 1px solid #000000;
   border-radius: 8px;
+  -webkit-transition: border-color 300ms;
+  -o-transition: border-color 300ms;
+  transition: border-color 300ms;
+}
+
+.headerTextButton:nth-child(1):hover,  .headerTextButton:nth-child(1):active{
+  border-color: #0B63CB;
 }
 
 .headerTextButton:nth-child(2) {
   width: auto;
 }
 
+.headerTextButton a {
+  color: inherit;
+}
+
 .headerTextButton span {
   margin-right: 8px;
+  color: inherit;
+  -webkit-transition: color 300ms;
+  -o-transition: color 300ms;
+  transition: color 300ms;
+}
+
+.headerTextButton svg {
+  -webkit-transition: fill 300ms;
+  -o-transition: fill 300ms;
+  transition: fill 300ms;
+}
+
+.headerTextButton:hover svg, .headerTextButton:active svg {
+  fill: #0B63CB;
 }
 
 .headerSearchForm {
@@ -136,6 +166,16 @@
   padding: 0 55px 0 24px;
   font-family: 'SF Pro Text';
   font-size: 20px;
+  -webkit-transition: -webkit-box-shadow 300ms;
+  transition: -webkit-box-shadow 300ms;
+  -o-transition: box-shadow 300ms;
+  transition: box-shadow 300ms;
+  transition: box-shadow 300ms, -webkit-box-shadow 300ms;
+}
+
+.headerSearchInput:hover, .headerSearchInput:focus {
+  -webkit-box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.16);
 }
 
 .headerSearchButton {
@@ -180,8 +220,39 @@
   font-family: 'SF Pro Text';
 } 
 
+.headerSearchInput:focus::-webkit-input-placeholder {
+  color:transparent; 
+} 
+
+.headerSearchInput:focus::-moz-placeholder {
+  color:transparent; 
+} 
+
+.headerSearchInput:focus:-ms-input-placeholder {
+  color:transparent; 
+} 
+
+.headerSearchInput:focus::-ms-input-placeholder {
+  color:transparent; 
+} 
+
+.headerSearchInput:focus::-webkit-input-placeholder {
+  color:transparent; 
+}
+headerSearchInput:focus::-moz-placeholder {
+  color:transparent; 
+}
+headerSearchInput:focus:-ms-input-placeholder {
+  color:transparent; 
+}
+headerSearchInput:focus::-ms-input-placeholder {
+  color:transparent; 
+}
+headerSearchInput:focus::placeholder {
+  color:transparent; 
+}
+
 .headerChipsContainer {
-  /* margin-bottom: 68px; */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
