@@ -30,6 +30,10 @@
     vertical-align: middle;
   }
 
+  .mainTalksItemTitle:hover, .mainTalksItemTitle:active {
+    text-decoration: underline;
+  }
+
   .mainTalksItemPlay {
     -ms-grid-row: 3;
     -ms-grid-column: 1;
@@ -44,10 +48,30 @@
     text-align: center;
     line-height: 40px;
     cursor: pointer;
+    -webkit-transition: color 300ms, border-color 300ms;
+    -o-transition: color 300ms, border-color 300ms;
+    transition: color 300ms, border-color 300ms;
   }
 
   .mainTalksItemPlay span{
     margin-right: 4px;
+    color: inherit;
+  }
+
+  .mainTalksItemPlay svg {
+    fill: #000000;
+    -webkit-transition: fill 300ms;
+    -o-transition: fill 300ms;
+    transition: fill 300ms;
+  }
+
+  .mainTalksItemPlay:hover, .mainTalksItemPlay:active {
+    border-color: #0B63CB;
+    color: #0B63CB;
+  }
+
+  .mainTalksItemPlay:hover svg, .mainTalksItemPlay:active svg {
+    fill: #0B63CB;
   }
 
   .mainTalksItemData {
@@ -81,8 +105,8 @@
 
   @media screen and (max-width: 630px) {
     .mainTalksItem {
-              -ms-grid-rows: auto 24px auto 24px auto;
-                  grid-template-areas: 
+                  -ms-grid-rows: auto 24px auto 24px auto;
+                      grid-template-areas: 
       "title title"
       "play data"
       "text text";
