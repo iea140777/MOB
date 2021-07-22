@@ -1,10 +1,9 @@
-//------------------START ADD TAG CHIPS ------------------------
 document.addEventListener("DOMContentLoaded", function () { 
   const TAGS = ['JavaScipt', 'Performance', 'Xamarin', 'API Integration', 'React', 'React Native', 'Flutter', 'Development', 'Flutter', 'React', 'React Native', 'Flutter', 'Development', 'Flutter'];
   const moveSpeed = 7; // px/1s
   let moveAnimationDuration;
 
-  let windowWidth  = document.documentElement.clientWidth;
+  const windowWidth  = document.documentElement.clientWidth;
   let rowsAmount;
   
   if (windowWidth > 631) {
@@ -12,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     rowsAmount =  3;
   }
+
+  let heah = document.documentElement.clientHeight;
+  console.log(heah, windowWidth);
 
   let k = Math.floor(TAGS.length / rowsAmount);
   
@@ -28,7 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
     tagList3 = TAGS.slice(2*k, TAGS.length-1);
   }
 
-  const headerChipsContainer = document.querySelector('.headerChipsContainer');
+  const container = document.querySelector('.headerInnerContainer');
+  let headerChipsContainer = container.querySelector('.headerChipsContainer');
   
   if (headerChipsContainer) {
     createTagBlocks();
@@ -36,6 +39,60 @@ document.addEventListener("DOMContentLoaded", function () {
       animateOpacity ();
     };
   }
+
+  const headerChipsLine = document.querySelectorAll('.headerChipsLine');
+  const headerChipsBlock = headerChipsLine[0].querySelector('.headerChipsBlock');
+  blockWidth = headerChipsBlock.getBoundingClientRect().width;
+  console.log(blockWidth);
+  let linePosition = headerChipsLine[0].getBoundingClientRect().left;
+  // console.log(headerChipsLine[0].getBoundingClientRect().left);
+  // console.log(headerChipsLine[0].getBoundingClientRect().width);
+  
+  // jQuery(function() {
+
+  //   $('.headerChipsLine').draggable({
+  //     containment: "parent"
+  // }).filter('.headerChipsLine').draggable("option", "axis", "x");
+
+  $( ".headerChipsLine" ).draggable({
+    axis: "x",
+    drag: function( event, ui ) {
+      
+      ui.position.left = Math.min( blockWidth, ui.position.left );
+      ui.position.left = Math.max( -blockWidth, ui.position.left );
+      console.log(ui.position.left);
+      // console.log(ui.position.left);
+      // ui.position.right = Math.max( lineWidth, ui.position.right );
+    },
+    
+    // stop: function( event, ui ) {
+    //   if (ui.position.left < 0) {
+    //     // let line=$( ".headerChipsLine" );
+    //     blockToEnd(this);
+    //   }
+
+    //   if (ui.position.left > 0) {
+    //     // let line=$( ".headerChipsLine" );
+    //     blockToStart(this);
+    //   }
+    // }
+  });
+ 
+  // function blockToEnd (line) {
+  //   let block = line.querySelectorAll('.headerChipsBlock');
+  //   let newBlock = block[0].cloneNode(true);
+  //   newBlock.style.animationDuration = moveAnimationDuration + 's';
+  //   block[0].remove();
+  //   line.append(newBlock);
+  // }
+
+  // function blockToStart (line) {
+  //   let block = line.querySelectorAll('.headerChipsBlock');
+  //   let newBlock = block[0].cloneNode(true);
+  //   newBlock.style.animationDuration = moveAnimationDuration + 's';
+  //   block[block.length-1].remove();
+  //   line.prepend(newBlock);
+  // }
 
   function createTagBlocks () {
     let listApplied;
@@ -60,6 +117,13 @@ document.addEventListener("DOMContentLoaded", function () {
       let block3 = block1.cloneNode(true);
       block3.style.animationDuration = moveAnimationDuration + 's';
       chipsLine.appendChild(block3);
+      let block4 = block1.cloneNode(true);
+      block4.style.animationDuration = moveAnimationDuration + 's';
+      chipsLine.appendChild(block4);
+      let block5 = block1.cloneNode(true);
+      block5.style.animationDuration = moveAnimationDuration + 's';
+      chipsLine.appendChild(block5);
+      
     }
   }
 
@@ -75,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
       headerChipsBlock.appendChild(tagChip);
       line.appendChild(headerChipsBlock);
     }
-    if (headerChipsBlock.getBoundingClientRect().width < windowWidth) {
+    if (headerChipsBlock.getBoundingClientRect().width < windowWidth*1.1) {
       addMoreChips(headerChipsBlock, list);
     }
     return headerChipsBlock;
@@ -88,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
       tagChip.classList.add('needAnimation');
       tagChip.textContent = list[k];
       block.appendChild(tagChip);
-      if (block.getBoundingClientRect().width > windowWidth) {
+      if (block.getBoundingClientRect().width > windowWidth*1.1) {
         return block;
       }
     }
@@ -100,6 +164,8 @@ document.addEventListener("DOMContentLoaded", function () {
   //------------------END ADD TAG CHIPS (NOT FINISHED)------------------------
 
   //------------------START ANIMATE OPACITY (NOT FINISHED)------------------------
+  
+  
   function animateOpacity () {
     const opacityFull = [
       { opacity: '0.4' },
@@ -115,8 +181,9 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
     
     const tagButtons = document.getElementsByClassName('headerChip');
-    const opacityDuration = windowWidth / moveSpeed * 1000;
     setInterval(function() {
+      let windowWidth  = document.documentElement.clientWidth;
+      const opacityDuration = windowWidth / moveSpeed * 1000;
       for (let i = 0; i < tagButtons.length; i++)  {  
         let button = tagButtons[i];
         let position = button.getBoundingClientRect().left;
@@ -216,7 +283,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
       };
-    }, 500);
+    }, 1000);
   }  
 });
 //------------------END ANIMATE OPACITY (NOT FINISHED)------------------------
